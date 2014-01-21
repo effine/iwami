@@ -34,4 +34,22 @@ public class ApkDaoImpl extends JdbcDaoSupport implements ApkDao {
 			return null;
 	}
 
+	@Override
+	public boolean delApk(long id) {
+		int count = getJdbcTemplate().update("update " + SqlConstants.TABLE_APK + " set isdel = 1 where id = ?", new Object[]{id});
+		if(count > 0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean addApk(Apk apk) {
+		int count = getJdbcTemplate().update("insert into " + SqlConstants.TABLE_APK + "(version,address, lastmod_time,lastmod_userid,isdel) values(?,?, now(), ?, 0)", new Object[]{apk.getVersion(), apk.getUrl(), apk.getLastmodUserid()}); 
+		if(count > 0)
+			return true;
+		else
+			return false;
+	}
+
 }

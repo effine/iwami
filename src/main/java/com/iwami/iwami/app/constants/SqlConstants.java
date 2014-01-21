@@ -8,4 +8,6 @@ public interface SqlConstants {
 
 	public static final String TABLE_APK =  DATABASE + ".`apk`";
 
+	public static final String TABLE_CONTACT =  DATABASE + ".`contact`";
+
 }
