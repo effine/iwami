@@ -21,6 +21,10 @@
 	<bean name="onstartDao" class="com.iwami.iwami.app.dao.impl.OnstartDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+		
+	<bean name="apkDao" class="com.iwami.iwami.app.dao.impl.ApkDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
 	
 	<bean id="txManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

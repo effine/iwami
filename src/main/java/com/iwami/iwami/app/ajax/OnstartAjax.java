@@ -88,7 +88,7 @@ public class OnstartAjax {
 		} catch(Throwable t){
 			if(logger.isErrorEnabled())
 				logger.error("Exception in onstart", t);
-			result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_PARAM_ERROR);
+			result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR);
 		}
 		
 		

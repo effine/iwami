@@ -6,4 +6,6 @@ public interface SqlConstants {
 	
 	public static final String TABLE_ONSTART = DATABASE + ".`onstart`";
 
+	public static final String TABLE_APK =  DATABASE + ".`apk`";
+
 }

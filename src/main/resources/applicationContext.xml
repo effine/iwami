@@ -38,13 +38,27 @@
 	<bean name="onstartAjax" class="com.iwami.iwami.app.ajax.OnstartAjax">
 		<property name="onstartBiz" ref="onstartBiz" />
 	</bean>
+	<bean name="monitorAjax" class="com.iwami.iwami.app.ajax.MonitorAjax" />
+	<bean name="DownloadAjax" class="com.iwami.iwami.app.ajax.DownloadAjax">
+		<property name="apkBiz" ref="apkBiz" />
+	</bean>
 	
 	<bean name="onstartBiz" class="com.iwami.iwami.app.biz.impl.OnstartBizImpl">
 		<property name="onstartService" ref="onstartService" />
 	</bean>
+	<bean name="apkBiz" class="com.iwami.iwami.app.biz.impl.ApkBizImpl">
+		<property name="apkService" ref="apkService" />
+		
+		<property name="defaultURL">
+			<value>#[apk.defaultURL]</value>
+		</property>
+	</bean>
 	
 	<bean name="onstartService" class="com.iwami.iwami.app.service.impl.OnstartServiceImpl">
 		<property name="onstartDao" ref="onstartDao" />
+	</bean>
+	<bean name="apkService" class="com.iwami.iwami.app.service.impl.ApkServiceImpl">
+		<property name="apkDao" ref="apkDao" />
 	</bean>
 	
 	<bean name="expireTime" class="java.lang.Long">
