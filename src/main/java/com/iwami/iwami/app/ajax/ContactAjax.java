@@ -40,7 +40,7 @@ public class ContactAjax {
 				
 		} catch(Throwable t){
 			if(logger.isErrorEnabled())
-				logger.error("Exception in download", t);
+				logger.error("Exception in contact", t);
 			result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR);
 		}
 		
