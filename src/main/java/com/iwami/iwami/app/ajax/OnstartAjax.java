@@ -43,17 +43,13 @@ public class OnstartAjax {
 					}
 					
 					if(StringUtils.isNotBlank(uuid)){
-						System.out.println("0");
 						if(params.containsKey("type")){
 							type = NumberUtils.toInt(params.get("type"), -1);
 						}
-						System.out.println(type);
 						if(type >= 0){
-							System.out.println("1");
 							if(params.containsKey("time")){
 								time = NumberUtils.toLong(params.get("time"), 0);
 							}
-							System.out.println(time);
 							
 							if(time > 0){
 								Onstart onstart = new Onstart();
@@ -74,7 +70,6 @@ public class OnstartAjax {
 								result.put(ErrorCodeConstants.MSG_KEY, ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_PARAM_ONSTART_TIME));
 							}
 						} else{
-							System.out.println("2");
 							result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_PARAM_ONSTART_TYPE);
 							result.put(ErrorCodeConstants.MSG_KEY, ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_PARAM_ONSTART_TYPE));
 						}
