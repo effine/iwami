@@ -2,7 +2,6 @@ package com.iwami.iwami.app.common.dispatch;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -33,7 +32,7 @@ public class DispatchServlet extends HttpServlet {
 		Enumeration<String> eu = req.getParameterNames();
 		while(eu.hasMoreElements()){
 			String key = eu.nextElement();
-			params.put(key, encoding(req, key));
+			params.put(key, req.getParameter(key));
 		}
 		
 		String path = StringUtils.substringAfter(req.getRequestURI(), "/client/");
@@ -52,18 +51,6 @@ public class DispatchServlet extends HttpServlet {
 		} finally {
 			writer.flush();
 		}
-	}
-
-	private String encoding(HttpServletRequest req, String key) {
-		String value = req.getParameter(key);
-		if(StringUtils.isNotBlank(value))
-			try {
-				return new String(value.getBytes("ISO-8859-1"));
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		
-		return value;
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

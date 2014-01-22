@@ -15,8 +15,10 @@
 		http://fengchao.baidu.com/dtd/schema/stargate
 		http://fengchao.baidu.com/dtd/schema/stargate/stargate.xsd">
 
+	<!-- db -->
 	<import resource="applicationContext-db.xml" />
 
+	<!-- config -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -33,19 +35,29 @@
 		</property>
 	</bean>
 
+	<!-- framework -->
 	<bean id="post" class="com.iwami.iwami.app.common.dispatch.AjaxDispatcher" />
 
+	<!-- ajax -->
 	<bean name="onstartAjax" class="com.iwami.iwami.app.ajax.OnstartAjax">
 		<property name="onstartBiz" ref="onstartBiz" />
 	</bean>
 	<bean name="monitorAjax" class="com.iwami.iwami.app.ajax.MonitorAjax" />
-	<bean name="DownloadAjax" class="com.iwami.iwami.app.ajax.DownloadAjax">
+	<bean name="downloadAjax" class="com.iwami.iwami.app.ajax.DownloadAjax">
 		<property name="apkBiz" ref="apkBiz" />
 	</bean>
-	<bean name="ContactAjax" class="com.iwami.iwami.app.ajax.ContactAjax">
+	<bean name="contactAjax" class="com.iwami.iwami.app.ajax.ContactAjax">
 		<property name="contactBiz" ref="contactBiz" />
 	</bean>
+	<bean name="luckyAjax" class="com.iwami.iwami.app.ajax.LuckyAjax">
+		<property name="luckyBiz" ref="luckyBiz" />
+		<property name="userBiz" ref="userBiz" />
+	</bean>
+	<bean name="userAjax" class="com.iwami.iwami.app.ajax.UserAjax">
+		<property name="userBiz" ref="userBiz" />
+	</bean>
 	
+	<!-- biz -->
 	<bean name="onstartBiz" class="com.iwami.iwami.app.biz.impl.OnstartBizImpl">
 		<property name="onstartService" ref="onstartService" />
 	</bean>
@@ -59,17 +71,39 @@
 	<bean name="contactBiz" class="com.iwami.iwami.app.biz.impl.ContactBizImpl">
 		<property name="contactService" ref="contactService" />
 	</bean>
+	<bean name="luckyBiz" class="com.iwami.iwami.app.biz.impl.LuckyBizImpl">
+		<property name="luckyService" ref="luckyService" />
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean name="userBiz" class="com.iwami.iwami.app.biz.impl.UserBizImpl">
+		<property name="userService" ref="userService" />
+		
+		<property name="verifyCodeLength">
+			<value>#[verifyCode.Length]</value>
+		</property>
+	</bean>
 	
+	<!-- service -->
 	<bean name="onstartService" class="com.iwami.iwami.app.service.impl.OnstartServiceImpl">
 		<property name="onstartDao" ref="onstartDao" />
 	</bean>
 	<bean name="apkService" class="com.iwami.iwami.app.service.impl.ApkServiceImpl">
 		<property name="apkDao" ref="apkDao" />
+		<property name="expireTime" ref="expireTime" />
 	</bean>
 	<bean name="contactService" class="com.iwami.iwami.app.service.impl.ContactServiceImpl">
 		<property name="contactDao" ref="contactDao" />
+		<property name="expireTime" ref="expireTime" />
+	</bean>
+	<bean name="luckyService" class="com.iwami.iwami.app.service.impl.LuckyServiceImpl">
+		<property name="luckyDao" ref="luckyDao" />
+		<property name="expireTime" ref="expireTime" />
+	</bean>
+	<bean name="userService" class="com.iwami.iwami.app.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
 	</bean>
 	
+	<!-- common beans -->
 	<bean name="expireTime" class="java.lang.Long">
 		<constructor-arg><value>#[cache.defaultExpireTime]</value></constructor-arg>
 	</bean>

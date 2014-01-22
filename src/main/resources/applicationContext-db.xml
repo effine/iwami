@@ -30,6 +30,14 @@
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
+	<bean name="luckyDao" class="com.iwami.iwami.app.dao.impl.LuckyDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
+	<bean name="userDao" class="com.iwami.iwami.app.dao.impl.UserDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
 	<bean id="txManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />

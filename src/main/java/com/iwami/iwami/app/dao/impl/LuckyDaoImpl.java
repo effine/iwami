@@ -98,6 +98,7 @@ public class LuckyDaoImpl extends JdbcDaoSupport implements LuckyDao {
 
 	@Override
 	public boolean addLuckyHistory(LuckyHistory history) {
+		System.out.println(history);
 		int count = getJdbcTemplate().update("insert into " + SqlConstants.TABLE_LUCKY_HISTORY + "(userid, user_name, cell_phone, draw_id, draw_prize, gift, lastmod_time, lastmod_userid, isdel) values(?,?,?,?,?,?,now(),?,0)", 
 				new Object[]{history.getUserid(), history.getUsername(), history.getCellPhone(), history.getDrawid(), history.getDrawPrize(), history.getGift(), history.getLastmodUserid()});
 		if(count > 0)
@@ -132,7 +133,7 @@ public class LuckyDaoImpl extends JdbcDaoSupport implements LuckyDao {
 
 	@Override
 	public int getLuckyCountByUserid(long userid) {
-		return getJdbcTemplate().queryForInt("select coun(1) from " + SqlConstants.TABLE_LUCKY_HISTORY + " where userid = ? and isdel = 0", new Object[]{userid});
+		return getJdbcTemplate().queryForInt("select count(1) from " + SqlConstants.TABLE_LUCKY_HISTORY + " where userid = ? and isdel = 0", new Object[]{userid});
 	}
 
 }

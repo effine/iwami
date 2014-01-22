@@ -17,7 +17,7 @@ public class LocalCaches {
 
 	static {
 		manager = CacheManager.create();
-		cache = new Cache("hotelCache", 10000, false, false, CACHE_INVALID_TIME, CACHE_INVALID_TIME);
+		cache = new Cache("iwamicache", 10000, false, false, CACHE_INVALID_TIME, CACHE_INVALID_TIME);
 		cache.setCacheManager(manager);
 		cache.initialise();
 	}

@@ -74,7 +74,9 @@ public class LuckyAjax {
 				
 				if(user != null && user.getId() == userid){
 					LuckyConfig config = luckyBiz.getLuckyConfig();
-					if(config != null && user.getCurrentPrize() < config.getPrize()){
+					System.out.println(config);
+					System.out.println(user);
+					if(config != null && user.getCurrentPrize() >= config.getPrize()){
 						LuckyRule rule = luckyBiz.draw(user, config);
 						user = userBiz.getUserById(userid);
 						

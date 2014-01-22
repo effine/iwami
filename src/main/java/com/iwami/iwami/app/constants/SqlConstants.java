@@ -10,7 +10,7 @@ public interface SqlConstants {
 
 	public static final String TABLE_CONTACT =  DATABASE + ".`contact`";
 
-	public static final String TABLE_LUCKY_RULE = DATABASE + ".`luck_draw`";
+	public static final String TABLE_LUCKY_RULE = DATABASE + ".`luck_rule`";
 
 	public static final String TABLE_LUCKY_CONFIG = DATABASE + ".`luck_config`";
 
@@ -18,6 +18,8 @@ public interface SqlConstants {
 
 	public static final String TABLE_USER = DATABASE + ".`user`";
 
-	public static final String TABLE_USERINFO = DATABASE + ".`userinfo`";
+	public static final String TABLE_USERINFO = DATABASE + ".`user_info`";
+
+	public static final String TABLE_CODE = DATABASE + ".`code`";
 
 }

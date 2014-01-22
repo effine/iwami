@@ -15,7 +15,7 @@ public class ContactDaoImpl extends JdbcDaoSupport implements ContactDao{
 
 	@Override
 	public Contact getContact() {
-		List<Contact> contacts = getJdbcTemplate().query("select id, phone1, email1, domain, qq, qqgroup, phone2, email2, lastmod_time, lastmod_userid " + SqlConstants.TABLE_CONTACT + " where isdel = 0 order by lastmod_time desc limit 1", new RowMapper<Contact>() {
+		List<Contact> contacts = getJdbcTemplate().query("select id, phone1, email1, domain, qq, qqgroup, phone2, email2, lastmod_time, lastmod_userid from " + SqlConstants.TABLE_CONTACT + " where isdel = 0 order by lastmod_time desc limit 1", new RowMapper<Contact>() {
 
 			@Override
 			public Contact mapRow(ResultSet rs, int index) throws SQLException {
