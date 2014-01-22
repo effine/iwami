@@ -21,5 +21,7 @@ public interface SqlConstants {
 	public static final String TABLE_USERINFO = DATABASE + ".`user_info`";
 
 	public static final String TABLE_CODE = DATABASE + ".`code`";
+	
+	public static final String TABLE_TIPS = DATABASE + ".`tips`";
 
 }

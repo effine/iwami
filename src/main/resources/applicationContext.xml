@@ -56,6 +56,9 @@
 	<bean name="userAjax" class="com.iwami.iwami.app.ajax.UserAjax">
 		<property name="userBiz" ref="userBiz" />
 	</bean>
+	<bean name="tipsAjax" class="com.iwami.iwami.app.ajax.TipsAjax">
+		<property name="tipsBiz" ref="tipsBiz" />
+	</bean>
 	
 	<!-- biz -->
 	<bean name="onstartBiz" class="com.iwami.iwami.app.biz.impl.OnstartBizImpl">
@@ -82,6 +85,9 @@
 			<value>#[verifyCode.Length]</value>
 		</property>
 	</bean>
+	<bean name="tipsBiz" class="com.iwami.iwami.app.biz.impl.TipsBizImpl">
+		<property name="tipsService" ref="tipsService" />
+	</bean>
 	
 	<!-- service -->
 	<bean name="onstartService" class="com.iwami.iwami.app.service.impl.OnstartServiceImpl">
@@ -101,6 +107,9 @@
 	</bean>
 	<bean name="userService" class="com.iwami.iwami.app.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao" />
+	</bean>
+		<bean name="tipsService" class="com.iwami.iwami.app.service.impl.TipsServiceImpl">
+		<property name="tipsDao" ref="tipsDao" />
 	</bean>
 	
 	<!-- common beans -->
