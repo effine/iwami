@@ -19,25 +19,30 @@ public class TipsAjax {
 	private TipsBiz tipsBiz;
 
 	@AjaxMethod(path = "tips.ajax")
-	public Map<Object,Object> getContent(Map<String, String> params) {
-		Map<Object,Object> result = new HashMap<Object,Object>();
-		try{
+	public Map<Object, Object> getContent(Map<String, String> params) {
+		Map<Object, Object> result = new HashMap<Object, Object>();
+		try {
 			int type = -1;
-			if(params.containsKey("type")){
-				type  = Integer.parseInt(params.get("type"));
-				if(type > 0){
+			if (params.containsKey("type")) {
+				type = Integer.parseInt(params.get("type"));
+				System.out.println("接收到的参数：" + type);
+				if (type > 0) {
 					result.put("data", tipsBiz.getContent(type));
-					result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_OK);
-				}else{
-					result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR);
+					result.put(ErrorCodeConstants.STATUS_KEY,
+							ErrorCodeConstants.STATUS_OK);
+				} else {
+					result.put(ErrorCodeConstants.STATUS_KEY,
+							ErrorCodeConstants.STATUS_ERROR);
 				}
-			}else{
-				result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_PARAM_ERROR);
+			} else {
+				result.put(ErrorCodeConstants.STATUS_KEY,
+						ErrorCodeConstants.STATUS_PARAM_ERROR);
 			}
-		}catch(Throwable t){
-			if(logger.isErrorEnabled())
-				logger.error("Exception in tips",t);
-			result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR);
+		} catch (Throwable t) {
+			if (logger.isErrorEnabled())
+				logger.error("Exception in tips", t);
+			result.put(ErrorCodeConstants.STATUS_KEY,
+					ErrorCodeConstants.STATUS_ERROR);
 		}
 		return result;
 	}

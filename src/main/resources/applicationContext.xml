@@ -59,6 +59,9 @@
 	<bean name="tipsAjax" class="com.iwami.iwami.app.ajax.TipsAjax">
 		<property name="tipsBiz" ref="tipsBiz" />
 	</bean>
+	<bean name="topAjax" class="com.iwami.iwami.app.ajax.TopAjax">
+		<property name="topBiz" ref="topBiz"></property>
+	</bean>
 	
 	<!-- biz -->
 	<bean name="onstartBiz" class="com.iwami.iwami.app.biz.impl.OnstartBizImpl">
@@ -88,6 +91,9 @@
 	<bean name="tipsBiz" class="com.iwami.iwami.app.biz.impl.TipsBizImpl">
 		<property name="tipsService" ref="tipsService" />
 	</bean>
+	<bean name="topBiz" class="com.iwami.iwami.app.biz.impl.TopBizImpl">
+		<property name="topService" ref="topService" />
+	</bean>
 	
 	<!-- service -->
 	<bean name="onstartService" class="com.iwami.iwami.app.service.impl.OnstartServiceImpl">
@@ -108,9 +114,13 @@
 	<bean name="userService" class="com.iwami.iwami.app.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao" />
 	</bean>
-		<bean name="tipsService" class="com.iwami.iwami.app.service.impl.TipsServiceImpl">
+	<bean name="tipsService" class="com.iwami.iwami.app.service.impl.TipsServiceImpl">
 		<property name="tipsDao" ref="tipsDao" />
 	</bean>
+	<bean name="topService" class="com.iwami.iwami.app.service.impl.TopServiceImpl">
+		<property name="topDao" ref="topDao" />
+	</bean>
+	
 	
 	<!-- common beans -->
 	<bean name="expireTime" class="java.lang.Long">
