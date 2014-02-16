@@ -14,7 +14,7 @@ public class TopDaoImpl extends JdbcDaoSupport implements TopDao {
 
 	@Override
 	public List<Top> getTop() {
-		String sql ="select * from task where (type & 8) = 8 and isdel = 0 order by rank asc";
+		String sql ="select * from iwami.task where (type & 8) = 8 and isdel = 0 order by rank asc";
 		List<Top> list = getJdbcTemplate().query(sql,new RowMapper<Top>(){
 			
 			int i = 0;
@@ -33,16 +33,16 @@ public class TopDaoImpl extends JdbcDaoSupport implements TopDao {
 				top.setRegister(rs.getInt("register"));
 				top.setReputation(rs.getInt("reputation"));
 				top.setStar(rs.getInt("star"));
-				top.setStartTime(rs.getTimestamp("lastmodTime").getTime());
-				top.setEndTime(rs.getTimestamp("lastmodTime").getTime());
-				top.setCurrentPrize(rs.getInt("currentPrize"));
-				top.setMaxPrize(rs.getInt("maxPrize"));
+				top.setStartTime(rs.getTimestamp("start_time").getTime());
+				top.setEndTime(rs.getTimestamp("end_time").getTime());
+				top.setCurrentPrize(rs.getInt("current_prize"));
+				top.setMaxPrize(rs.getInt("max_prize"));
 				top.setTime(rs.getInt("time"));
-				top.setIconGray(rs.getString("iconGray"));
-				top.setIconSmall(rs.getString("iconSmall"));
-				top.setIconBig(rs.getString("iconBig"));
-				top.setLastmodTime(rs.getTimestamp("lastmodTime").getTime());
-				top.setLastmodUserid(rs.getInt("lastmodUserid"));
+				top.setIconGray(rs.getString("icon_gray"));
+				top.setIconSmall(rs.getString("icon_small"));
+				top.setIconBig(rs.getString("icon_big"));
+				top.setLastmodTime(rs.getTimestamp("lastmod_time").getTime());
+				top.setLastmodUserid(rs.getInt("lastmod_userid"));
 				top.setIsdel(rs.getInt("isdel"));
 				return top;
 			}

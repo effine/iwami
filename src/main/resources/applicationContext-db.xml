@@ -42,6 +42,10 @@
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
+	<bean name="topDao" class="com.iwami.iwami.app.dao.impl.TopDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
 	<bean id="txManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
