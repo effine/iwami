@@ -1,36 +1,39 @@
 package com.iwami.iwami.app.model;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 public class Top {
 
-	private int id;
+	private long id;
 	private String name;
 	private int rank;
 	private double size;
 	private String intr;
 	private int prize;
 	private int type;
-	private int background; // TODO tinyint类型
-	private int register; // TODO tinyint类型
+	private int background;
+	private int register;
 	private int reputation;
 	private int star;
-	private String startTime; // TODO datetime类型
-	private String endTime; // TODO datetime类型
+	private long startTime;
+	private long endTime;
 	private int currentPrize;
 	private int maxPrize;
 	private int time;
 	private String iconGray;
 	private String iconSmall;
 	private String iconBig;
-	private long lastmodTime; // TODO datetime类型
+	private long lastmodTime;
 	private int lastmodUserid;
-	private int isdel; // TODO tinyint类型
-	private int available; // TODO 数据库表task没有该属性
+	private int isdel;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -114,19 +117,19 @@ public class Top {
 		this.star = star;
 	}
 
-	public String getStartTime() {
+	public long getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(String startTime) {
+	public void setStartTime(long startTime) {
 		this.startTime = startTime;
 	}
 
-	public String getEndTime() {
+	public long getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(String endTime) {
+	public void setEndTime(long endTime) {
 		this.endTime = endTime;
 	}
 
@@ -202,11 +205,18 @@ public class Top {
 		this.isdel = isdel;
 	}
 
-	public int getAvailable() {
-		return available;
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
-	public void setAvailable(int available) {
-		this.available = available;
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 }

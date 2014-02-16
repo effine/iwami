@@ -15,4 +15,11 @@ public class TopServiceImpl implements TopService{
 		return topDao.getTop();
 	}
 
+	public TopDao getTopDao() {
+		return topDao;
+	}
+
+	public void setTopDao(TopDao topDao) {
+		this.topDao = topDao;
+	}
 }

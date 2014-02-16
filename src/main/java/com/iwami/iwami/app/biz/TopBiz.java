@@ -1,11 +1,9 @@
 package com.iwami.iwami.app.biz;
 
-import java.util.List;
-
-import com.iwami.iwami.app.model.Top;
+import java.util.Map;
 
 public interface TopBiz {
 	
-	public List<Top> getTop();
+	public Map<Object,Object> getTop();
 	
 }
