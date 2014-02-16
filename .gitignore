@@ -1,5 +1,4 @@
 *.class
-src/main/resources/jdbc-mysql.properties
 
 # Package Files #
 *.jar
