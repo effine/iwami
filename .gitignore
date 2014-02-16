@@ -1,4 +1,5 @@
 *.class
+jdbc-mysql.properties
 
 # Package Files #
 *.jar
@@ -10,3 +11,4 @@
 *.classpath
 *.project
 /.settings
+
