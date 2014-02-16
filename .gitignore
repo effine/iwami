@@ -1,5 +1,5 @@
 *.class
-jdbc-mysql.properties
+*/jdbc-mysql.properties
 
 # Package Files #
 *.jar
