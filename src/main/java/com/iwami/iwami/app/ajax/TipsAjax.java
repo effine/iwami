@@ -25,14 +25,13 @@ public class TipsAjax {
 			int type = -1;
 			if (params.containsKey("type")) {
 				type = Integer.parseInt(params.get("type"));
-				System.out.println("接收到的参数：" + type);
 				if (type > 0) {
 					result.put("data", tipsBiz.getContent(type));
 					result.put(ErrorCodeConstants.STATUS_KEY,
 							ErrorCodeConstants.STATUS_OK);
 				} else {
 					result.put(ErrorCodeConstants.STATUS_KEY,
-							ErrorCodeConstants.STATUS_ERROR);
+							ErrorCodeConstants.STATUS_PARAM_ERROR);
 				}
 			} else {
 				result.put(ErrorCodeConstants.STATUS_KEY,

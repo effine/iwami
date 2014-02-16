@@ -1,21 +1,30 @@
 package com.iwami.iwami.app.model;
 
 public class Top {
-	
+
 	private int id;
 	private String name;
 	private int rank;
 	private double size;
 	private String intr;
 	private int prize;
-	private int available;
-	private int background;
-	private int register;
-	private int time;
-	private int star;
+	private int type;
+	private int background; // TODO tinyint类型
+	private int register; // TODO tinyint类型
 	private int reputation;
+	private int star;
+	private String startTime; // TODO datetime类型
+	private String endTime; // TODO datetime类型
+	private int currentPrize;
+	private int maxPrize;
+	private int time;
+	private String iconGray;
 	private String iconSmall;
 	private String iconBig;
+	private long lastmodTime; // TODO datetime类型
+	private int lastmodUserid;
+	private int isdel; // TODO tinyint类型
+	private int available; // TODO 数据库表task没有该属性
 
 	public int getId() {
 		return id;
@@ -65,12 +74,12 @@ public class Top {
 		this.prize = prize;
 	}
 
-	public int getAvailable() {
-		return available;
+	public int getType() {
+		return type;
 	}
 
-	public void setAvailable(int available) {
-		this.available = available;
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	public int getBackground() {
@@ -89,12 +98,12 @@ public class Top {
 		this.register = register;
 	}
 
-	public int getTime() {
-		return time;
+	public int getReputation() {
+		return reputation;
 	}
 
-	public void setTime(int time) {
-		this.time = time;
+	public void setReputation(int reputation) {
+		this.reputation = reputation;
 	}
 
 	public int getStar() {
@@ -105,12 +114,52 @@ public class Top {
 		this.star = star;
 	}
 
-	public int getReputation() {
-		return reputation;
+	public String getStartTime() {
+		return startTime;
 	}
 
-	public void setReputation(int reputation) {
-		this.reputation = reputation;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
+	public int getCurrentPrize() {
+		return currentPrize;
+	}
+
+	public void setCurrentPrize(int currentPrize) {
+		this.currentPrize = currentPrize;
+	}
+
+	public int getMaxPrize() {
+		return maxPrize;
+	}
+
+	public void setMaxPrize(int maxPrize) {
+		this.maxPrize = maxPrize;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public String getIconGray() {
+		return iconGray;
+	}
+
+	public void setIconGray(String iconGray) {
+		this.iconGray = iconGray;
 	}
 
 	public String getIconSmall() {
@@ -129,4 +178,35 @@ public class Top {
 		this.iconBig = iconBig;
 	}
 
+	public long getLastmodTime() {
+		return lastmodTime;
+	}
+
+	public void setLastmodTime(long lastmodTime) {
+		this.lastmodTime = lastmodTime;
+	}
+
+	public int getLastmodUserid() {
+		return lastmodUserid;
+	}
+
+	public void setLastmodUserid(int lastmodUserid) {
+		this.lastmodUserid = lastmodUserid;
+	}
+
+	public int getIsdel() {
+		return isdel;
+	}
+
+	public void setIsdel(int isdel) {
+		this.isdel = isdel;
+	}
+
+	public int getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(int available) {
+		this.available = available;
+	}
 }

@@ -14,8 +14,7 @@ public class TopDaoImpl extends JdbcDaoSupport implements TopDao {
 
 	@Override
 	public List<Top> getTop() {
-		/* TODO type为金榜任务，二进制表示，参考数据库设计task表  */
-		String sql ="select * from task where type = 01000000 order by rank ";
+		String sql ="select * from task where (type & 8) = 8  order by rank ";
 		List<Top> list = getJdbcTemplate().query(sql,new RowMapper<Top>(){
 			@Override
 			public Top mapRow(ResultSet rs, int index) throws SQLException {
@@ -26,22 +25,26 @@ public class TopDaoImpl extends JdbcDaoSupport implements TopDao {
 				top.setSize(rs.getDouble("size"));
 				top.setIntr(rs.getString("intr"));
 				top.setPrize(rs.getInt("prize"));
-				top.setAvailable(rs.getInt("available"));
+				top.setType(rs.getInt("type"));
 				top.setBackground(rs.getInt("background"));
 				top.setRegister(rs.getInt("register"));
-				top.setTime(rs.getInt("time"));
-				top.setStar(rs.getInt("star"));
 				top.setReputation(rs.getInt("reputation"));
+				top.setStar(rs.getInt("star"));
+				top.setStartTime(rs.getString("startTime"));
+				top.setEndTime(rs.getString("endTime"));
+				top.setCurrentPrize(rs.getInt("currentPrize"));
+				top.setMaxPrize(rs.getInt("maxPrize"));
+				top.setTime(rs.getInt("time"));
+				top.setIconGray(rs.getString("iconGray"));
 				top.setIconSmall(rs.getString("iconSmall"));
 				top.setIconBig(rs.getString("iconBig"));
+				top.setLastmodTime(rs.getLong("lastmodTime"));
+				top.setLastmodUserid(rs.getInt("lastmodUserid"));
+				top.setIsdel(rs.getInt("isdel"));
+				top.setAvailable(rs.getInt("available"));
 				return top;
 			}
 		});
 			return list;
 	} 
-
-	@Override
-	public Long getUpdateTime() {
-		return null;
-	}
 }

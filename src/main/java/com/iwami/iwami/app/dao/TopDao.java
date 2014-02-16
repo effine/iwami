@@ -7,7 +7,5 @@ import com.iwami.iwami.app.model.Top;
 public interface TopDao {
 	
 	public List<Top> getTop();
-	
-	public Long getUpdateTime();
 
 }

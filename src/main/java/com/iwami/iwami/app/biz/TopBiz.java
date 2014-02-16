@@ -8,6 +8,4 @@ public interface TopBiz {
 	
 	public List<Top> getTop();
 	
-	public Long getUpdateTime();
-	
 }

@@ -8,6 +8,4 @@ public interface TopService {
 	
 	public List<Top> getTop();
 	
-	public Long getUpdateTime();
-
 }

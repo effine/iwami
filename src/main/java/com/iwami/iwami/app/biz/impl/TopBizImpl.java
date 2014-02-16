@@ -16,11 +16,6 @@ public class TopBizImpl implements TopBiz {
 		return topService.getTop();
 	}
 	
-	@Override
-	public Long getUpdateTime() {
-		return topService.getUpdateTime();
-	}
-
 	public TopService getTopService() {
 		return topService;
 	}

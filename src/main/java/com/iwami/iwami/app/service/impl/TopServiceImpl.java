@@ -15,9 +15,4 @@ public class TopServiceImpl implements TopService{
 		return topDao.getTop();
 	}
 
-	@Override
-	public Long getUpdateTime() {
-		return topDao.getUpdateTime();
-	}
-
 }
