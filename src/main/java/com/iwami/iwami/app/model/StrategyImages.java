@@ -4,14 +4,11 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class Wami {
+public class StrategyImages {
 
 	private long id;
-	private int userid;
-	private long taskId;
-	private int type;
-	private int prize;
-	private long addTime;
+	private int rank;
+	private String iconUrl;
 	private long lastmodTime;
 	private int lastmodUserid;
 	private int isdel;
@@ -24,44 +21,20 @@ public class Wami {
 		this.id = id;
 	}
 
-	public int getUserid() {
-		return userid;
+	public int getRank() {
+		return rank;
 	}
 
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 
-	public long getTaskId() {
-		return taskId;
+	public String getIconUrl() {
+		return iconUrl;
 	}
 
-	public void setTaskId(long taskId) {
-		this.taskId = taskId;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
-
-	public int getPrize() {
-		return prize;
-	}
-
-	public void setPrize(int prize) {
-		this.prize = prize;
-	}
-
-	public long getAddTime() {
-		return addTime;
-	}
-
-	public void setAddTime(long addTime) {
-		this.addTime = addTime;
+	public void setIconUrl(String iconUrl) {
+		this.iconUrl = iconUrl;
 	}
 
 	public long getLastmodTime() {

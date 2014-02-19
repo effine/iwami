@@ -19,17 +19,20 @@ public class WamiAjax {
 	private WamiBiz wamiBiz;
 
 	@AjaxMethod(path = "wami.ajax")
-	public Map<Object, Object> statusUpload() {
+	public Map<Object, Object> statusUpload(Map<String,String> params) {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		try {
-
-			result.put(ErrorCodeConstants.STATUS_KEY,
-					ErrorCodeConstants.STATUS_OK);
+			boolean b = params.containsKey("userid") && params.containsKey("taskid") && params.containsKey("type") && params.containsKey("time");
+			if(b){
+				
+				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
+			}else{
+				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
+			}
 		} catch (Throwable t) {
 			if (logger.isErrorEnabled()) {
 				logger.error("Exception in wami", t);
-				result.put(ErrorCodeConstants.STATUS_KEY,
-						ErrorCodeConstants.STATUS_ERROR);
+				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}
 		return result;

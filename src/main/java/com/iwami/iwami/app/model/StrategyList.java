@@ -6,22 +6,22 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class StrategyList {
 
-	private int id; // TODO tinyint
+	private long id;
 	private String name;
 	private String subname;
 	private String intr;
 	private int rank;
 	private String iconSmall;
 	private String iconBig;
-	private long lastmodTime; // TODO datetime
+	private long lastmodTime;
 	private int lastmodUserid;
-	private int isdel; // TODO tinyint
+	private int isdel;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

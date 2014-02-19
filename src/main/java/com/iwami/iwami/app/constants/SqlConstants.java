@@ -23,5 +23,12 @@ public interface SqlConstants {
 	public static final String TABLE_CODE = DATABASE + ".`code`";
 	
 	public static final String TABLE_TIPS = DATABASE + ".`tips`";
+	
+	public static final String TABLE_WAMI = DATABASE + ".`wami`";
+	
+	public static final String TABLE_STRATEGY_LIST = DATABASE + ".`strategy_list`";
+	
+	public static final String TABLE_STRATEGY_IMAGES = DATABASE + ".`strategy_images`";
+	
 
 }

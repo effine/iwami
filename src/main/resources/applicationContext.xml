@@ -62,6 +62,16 @@
 	<bean name="topAjax" class="com.iwami.iwami.app.ajax.TopAjax">
 		<property name="topBiz" ref="topBiz"></property>
 	</bean>
+	<bean name="wamiAjax" class="com.iwami.iwami.app.ajax.WamiAjax">
+		<property name="wamiBiz" ref="wamiBiz"></property>
+	</bean>
+	<bean name="strategyListAjax" class="com.iwami.iwami.app.ajax.StrategyListAjax">
+		<property name="strategyListBiz" ref="strategyListBiz"></property>
+	</bean>
+	<bean name="strategyImagesAjax" class="com.iwami.iwami.app.ajax.StrategyListAjax">
+		<property name="strategyImagesBiz" ref="strategyImagesBiz"></property>
+	</bean>
+	
 
 	
 	<!-- biz -->
@@ -94,6 +104,18 @@
 	<bean name="topBiz" class="com.iwami.iwami.app.biz.impl.TopBizImpl">
 		<property name="topService" ref="topService" />
 	</bean>
+	<bean name="wamiBiz" class="com.iwami.iwami.app.biz.impl.WamiBizImpl">
+		<property name="wamiService" ref="wamiService" />
+	</bean>
+	<bean name="strategyListBiz" class="com.iwami.iwami.app.biz.impl.StrategyListBizImpl">
+		<property name="strategyListService" ref="strategyListService" />
+	</bean>
+	<bean name="strategyImagesBiz" class="com.iwami.iwami.app.biz.impl.StrategyImagesBizImpl">
+		<property name="siService" ref="siService" />
+	</bean>
+	
+	
+	
 	
 	<!-- service -->
 	<bean name="onstartService" class="com.iwami.iwami.app.service.impl.OnstartServiceImpl">
@@ -119,6 +141,15 @@
 	</bean>
 	<bean name="topService" class="com.iwami.iwami.app.service.impl.TopServiceImpl">
 		<property name="topDao" ref="topDao" />
+	</bean>
+	<bean name="wamiService" class="com.iwami.iwami.app.service.impl.WamiServiceImpl">
+		<property name="wamiDao" ref="wamiDao" />
+	</bean>
+	<bean name="strategyListService" class="com.iwami.iwami.app.service.impl.StrategyListServiceImpl">
+		<property name="strategyListDao" ref="strategyListDao" />
+	</bean>
+	<bean name="siService" class="com.iwami.iwami.app.service.impl.StrategyImagesServiceImpl">
+		<property name="siDao" ref="siDao" />
 	</bean>
 	
 	

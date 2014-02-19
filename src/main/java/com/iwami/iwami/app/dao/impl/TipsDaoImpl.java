@@ -15,8 +15,8 @@ public class TipsDaoImpl extends JdbcDaoSupport implements TipsDao{
 
 	@Override
 	public String getContent(int type) {
-		
-		List<Tips> content = getJdbcTemplate().query("select * from "+ SqlConstants.TABLE_TIPS +" where isdel = 0  and type = ? order by lastmod_time desc  limit 1",new Object[]{type}, new RowMapper<Tips>(){
+		String sql = "select * from "+ SqlConstants.TABLE_TIPS +" where isdel = 0  and type = ? order by lastmod_time desc  limit 1";
+		List<Tips> content = getJdbcTemplate().query(sql,new Object[]{type}, new RowMapper<Tips>(){
 			@Override
 			public Tips mapRow(ResultSet rs, int index) throws SQLException {
 				Tips tips  =  new Tips();
