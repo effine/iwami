@@ -1,6 +1,4 @@
 
-mysql -uroot -proot
-
 use iwami;
 
 -- 浏览，好评 （攻略id：100001）
