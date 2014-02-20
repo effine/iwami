@@ -111,9 +111,9 @@ create table task (
 	register tinyint(3) not null default 0 comment "是否需要注册: 0不需要,1需要",
 	reputation int(10) default 0 not null comment "好评数",
 	star   int(10) default 0 not null comment "星级数",
-	start_time datetime not null default now() comment "开始时间",
-	end_time datetime comment "结束时间",
-	current_prize int(10) not null default 0 comment "当前已抢米粒数",
+	start_time datetime not null  default now()  comment "开始时间",
+	end_time datetime  not null comment "结束时间",
+	current_prize int(10) not null default -1 comment "当前已抢米粒数",
 	max_prize int(10) not null default -1 comment "最大可抢米粒数",
 	icon_gray  varchar(255)  comment "灰色图片",
 	icon_small varchar(255)  comment "Icon小图",
@@ -138,8 +138,6 @@ create table wami (
 	isdel tinyint(3) not null default 0 comment "0是前端展示,1是删除，2是仅后端显示",
 	primary key(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 -- 礼品列表
 create table present (
