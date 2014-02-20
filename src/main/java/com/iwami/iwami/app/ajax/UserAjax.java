@@ -12,11 +12,9 @@ import com.iwami.iwami.app.biz.UserBiz;
 import com.iwami.iwami.app.common.dispatch.AjaxClass;
 import com.iwami.iwami.app.common.dispatch.AjaxMethod;
 import com.iwami.iwami.app.constants.ErrorCodeConstants;
-import com.iwami.iwami.app.constants.IWamiConstants;
 import com.iwami.iwami.app.exception.VerifyCodeMismatchException;
 import com.iwami.iwami.app.model.User;
 import com.iwami.iwami.app.util.IWamiUtils;
-import com.iwami.iwami.app.util.TwoDCodeUtil;
 
 @AjaxClass
 public class UserAjax {
@@ -26,7 +24,7 @@ public class UserAjax {
 	private UserBiz userBiz;
 
 	@AjaxMethod(path = "userinfo.ajax")
-	public Map<Object, Object> download(Map<String, String> params) {
+	public Map<Object, Object> getUserinfo(Map<String, String> params) {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		
 		try{
@@ -40,7 +38,6 @@ public class UserAjax {
 			if(user != null){
 				result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_OK);
 				result.put("userid", user.getId());
-				result.put("2Dcode", TwoDCodeUtil.get2DCode(user.getId() + IWamiConstants.TWO_DIMENSION_CODE_SEPERATOR + user.getName() + IWamiConstants.TWO_DIMENSION_CODE_SEPERATOR + user.getCellPhone()));
 				result.put("username", user.getName());
 				result.put("uuid", user.getUuid());
 				result.put("cellPhone", user.getCellPhone());
