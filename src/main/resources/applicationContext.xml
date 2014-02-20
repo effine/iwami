@@ -71,6 +71,9 @@
 	<bean name="strategyImagesAjax" class="com.iwami.iwami.app.ajax.StrategyListAjax">
 		<property name="strategyImagesBiz" ref="strategyImagesBiz"></property>
 	</bean>
+	<bean name="strategyDetailAjax" class="com.iwami.iwami.app.ajax.StrategyDetailAjax">
+		<property name="strategyDetailBiz" ref="strategyDetailBiz"></property>
+	</bean>
 	
 
 	
@@ -113,6 +116,9 @@
 	<bean name="strategyImagesBiz" class="com.iwami.iwami.app.biz.impl.StrategyImagesBizImpl">
 		<property name="siService" ref="siService" />
 	</bean>
+	<bean name="strategyDetailBiz" class="com.iwami.iwami.app.biz.impl.StrategyDetailBizImpl">
+		<property name="strategyDetailService" ref="strategyDetailService" />
+	</bean>
 	
 	
 	
@@ -150,6 +156,9 @@
 	</bean>
 	<bean name="siService" class="com.iwami.iwami.app.service.impl.StrategyImagesServiceImpl">
 		<property name="siDao" ref="siDao" />
+	</bean>
+	<bean name="strategyDetailService" class="com.iwami.iwami.app.service.impl.StrategyDetailServiceImpl">
+		<property name="strategyDetailDao" ref="strategyDetailDao" />
 	</bean>
 	
 	

@@ -18,7 +18,7 @@ public class StrategyDetailAjax {
 	
 	private StrategyDetailBiz strategyDetailBiz;
 	
-	@AjaxMethod(path = "srtategyDetail.ajax")
+	@AjaxMethod(path = "srtategy/detail.ajax")
 	public Map<Object,Object> strategyDetail(Map<String,String> params){
 		Map<Object,Object> result = new HashMap<Object,Object>();
 		
@@ -27,25 +27,24 @@ public class StrategyDetailAjax {
 				int id = Integer.parseInt(params.get("id"));
 				int start = Integer.parseInt(params.get("start"));
 				int step = Integer.parseInt(params.get("step"));
-				
-				if(start < 0 ){
+				if(start >= 0 ){
+					if(step > 0){
+						Map<Object,Object> map = strategyDetailBiz.getData(id, start, step);
+						
+						if((Boolean) map.get("strategyId")){
+							if(start <= Integer.parseInt(map.get("rate").toString())){
+								result.putAll(map);
+								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
+							}else
+								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_START1);
+						}else
+							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_ID);
+					}else
+						result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_STEP);
+				}else
 					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_START);
-				}
-				
-				if(step <= 0){
-					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_STEP);
-				}
-				
-				Map<Object,Object> map = strategyDetailBiz.getData(id, start, step);
-				if(start > Integer.parseInt(map.get("rate").toString())){
-					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_START1);
-				}
-				
-			}else{
+			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
-			}
-				result.put(ErrorCodeConstants.STATUS_KEY,
-						ErrorCodeConstants.STATUS_OK);
 		}catch(Throwable t){
 			if(logger.isErrorEnabled()){
 				logger.error("Exception in strateDetail ",t);
@@ -53,5 +52,13 @@ public class StrategyDetailAjax {
 			}
 		}
 		return result;
+	}
+
+	public StrategyDetailBiz getStrategyDetailBiz() {
+		return strategyDetailBiz;
+	}
+
+	public void setStrategyDetailBiz(StrategyDetailBiz strategyDetailBiz) {
+		this.strategyDetailBiz = strategyDetailBiz;
 	}
 }

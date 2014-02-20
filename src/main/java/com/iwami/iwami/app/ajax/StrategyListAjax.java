@@ -24,7 +24,7 @@ public class StrategyListAjax {
 	private StrategyListBiz strategyListBiz;
 	private StrategyImagesBiz strategyImagesBiz;
 	
-	@AjaxMethod(path = "strategyList.ajax")
+	@AjaxMethod(path = "strategy/list.ajax")
 	public Map<Object,Object> strategyList(){
 		Map<Object,Object> result = new HashMap<Object,Object>();
 		

@@ -30,5 +30,9 @@ public interface SqlConstants {
 	
 	public static final String TABLE_STRATEGY_IMAGES = DATABASE + ".`strategy_images`";
 	
+	public static final String TABLE_STRATEGY_INFO = DATABASE + ".`strategy_info`";
+	
+	public static final String TABLE_STRATEGY_RATE = DATABASE + ".`strategy_rate`";
+	
 
 }
