@@ -10,6 +10,7 @@ public class StrategyInfo {
 	private int rank;
 	private String title;
 	private String comment;
+	private String url;
 	private long lastmodTime;
 	private int lastmodUserid;
 	private int isdel;
@@ -52,6 +53,14 @@ public class StrategyInfo {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public long getLastmodTime() {
