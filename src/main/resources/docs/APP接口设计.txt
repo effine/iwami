@@ -1,8 +1,7 @@
 以下接口全部需要在头加上：域名：port/client/
 大小写敏感
 
-
-1.服务器心跳接口
+1、服务器心跳接口
 	接口名字：monitor.ajax
 	输入参数：无
 	输出参数：status：0 
@@ -11,8 +10,8 @@
 	后端逻辑: 简单的return 0 
 	
 	http://localhost:8080/iwami/client/luck/monitor.ajax
-
-2.app上传启动信息
+	
+2、app上传启动信息
 	接口名字：onstart.ajax
 	输入参数：userid: int类型 用户id（如果用户id为空则传-1）
 			  cellPhone: int类型  手机号(为空则传-1)
@@ -95,7 +94,7 @@
 			   	 	star: int 星级数
 			   	 	reputation：int 好评数
 			   	 	iconSmall: String Icon小图
-						iconBig: String Icon大图
+					iconBig: String Icon大图
 
 			   	 },
 			   	  ......
@@ -114,16 +113,15 @@
 			   	 	star: int 星级数
 			   	 	reputation：int 好评数
 			   	 	iconSmall: String Icon小图
-						iconBig: String Icon大图
-
+					iconBig: String Icon大图
 			   	 }
 			   ] ,
 			   time: long  金榜最新更新时间(单位：毫秒)
 
 	后端逻辑: task表取出type为金榜任务
-			  rank需要按照数据库的顺序重新标记
+			  rank需要按照数据库的顺序重新标记(标记为1,2,3....)
 			  time为data对象在task表中lastmod_time属性的最大值
-			  当前时间小于start_time，在结果中不返回前端
+			  当前时间(当前系统时间)小于start_time，在结果中不返回前端
 			  当end_time不为空的时，当前时间大于end_time也不返回前端
 			  当max_prize大于0时，如max_prize大于current_prize时available为未抢光，max_prize小于等于current_prize时available为抢光
 
@@ -131,7 +129,7 @@
 6、挖米状态上传接口
 	接口名字：wami.ajax
 	输入参数：userid:  int  用户ID
-			  taskid:  int  任务ID
+			  taskid:  long  任务ID 
 			  type:	int  挖米类型: 0下载开始，1下载完成，2安装完成，3启动运行，4关闭/任务完成
 			  time:	long  客户端上传时间（单位：毫秒）
 			  channel：String 渠道值，线上可以为空（服务端固定值）
@@ -185,8 +183,6 @@
 			   			......
 			   			{}
 			   		]
-
-
 			   }	
 
 
@@ -200,8 +196,8 @@
 			  	300： 缺少参数
 			  	400： 后端错误
 			  	100061: 攻略id不存在
-			  	100062：start大于等于0
-			  	100063：step必须大于0 
+			  	100062：start小于0
+			  	100063：step不大于0 
 			  	100064：start大于评论总数
 			  	其他：具体某种类型错误，此时需要读取msg错误信息（提示用户）
 			   msg: 具体错误信息	
@@ -257,8 +253,8 @@
 			   			name: String app名字
 			   			rank: int 顺序
 				   	 	size: double  app大小（单位：KB）
-			   	 	intr: String  任务简介
-			   	 	appintr: String  app简介
+			   	 		intr: String  任务简介
+			   	 		appintr: String  app简介
 				   	 	prize: int  米粒数
 				   	 	type: int 任务类型: 0普通任务，1宝箱任务
 				   	 	available: int  是否抢光: 0未抢光，1抢光
@@ -267,8 +263,8 @@
 				   	 	time: int 运行时间（单位：秒）
 				   	 	iconGray: String Icon灰图
 				   	 	iconSmall: String Icon小图
-							iconBig: String Icon大图
-							lastmodtime: long 修改时间
+						iconBig: String Icon大图
+						lastmodtime: long 修改时间
 
 			   		},
 			   		......
@@ -293,7 +289,6 @@
 				   	 	iconSmall: String Icon小图
 							iconBig: String Icon大图
 							lastmodtime: long 修改时间
-
 			   		},
 			   		......
 			   		{}
@@ -330,8 +325,8 @@
 			  当前时间小于start_time，在结果中不返回前端
 			  当end_time不为空的时，当前时间大于end_time也不返回前端
 			  当max_prize大于0时，如max_prize大于current_prize时available为未抢光，max_prize小于等于current_prize时available为抢光
-			  排序：所有“可执行”任务排在所有“已抢光”任务上方，任务开始时间最近的任务排在上方
-			  
+			 排序：所有“可执行”任务排在所有“已抢光”任务上方，任务开始时间最近的任务排在上方
+
 11、米粒宝箱接口
 	接口名字：wami/treasure.ajax
 	输入参数：无
@@ -394,7 +389,7 @@
 			   			rank: int 顺序
 			   			type: int 类型：0线上快递，1线上手机充值卡，2线上支付宝，3线上银行卡，4线下，5抽奖
 			   			iconSmall: String Icon小图
-							iconBig: String Icon大图
+						iconBig: String Icon大图
 			   		},
 			   		......
 			   		{}
@@ -598,7 +593,6 @@
 			  (2)用户剩余米粒数减去抽奖所需米粒数，然后需要在update中进行where判断，如update影响行数为0则返回100192
 			 （3）抽奖算概率
 			  (4)抽奖结果放在luck_history表中，即就是luck_history中的draw_id、gift对应luck_draw中的id、gift；所需米粒数则为luck_config的prize
-			  
 			  (5) 需要判断一等奖/二等奖最大数量 luck_rule.count
 
 	http://localhost:8080/iwami/client/luck/draw.ajax
@@ -712,20 +706,20 @@
 			   		cellPhone: long 手机号
 			   		age: int 年龄
 			  		gender: int 性别：0帅哥，1美女
-   		  		job: String 职业
-   		  		address: String 地址
-   		  		currentPrize: int 用户拥有米粒数目
-   		  		exchangePrize: int 用户已经兑换米粒数目
-   		  		newPrize: int 用户新装米粒数目
-   		  		contPrize：int 用户激活米粒数目
-   		  		commentPrize: int 用户评价米粒数目
-   		  		lastCellPhone1: long 上次充值手机号
-   		  		lastAlipayAccount： String 上次支付宝账号
-   		  		lastBankAccount: long 上次银行账号
-   		  		lastBankName: String 上次银行卡开户行
-   		  		lastAddress: String 上次线上快递地址
-   		  		lastCellPhone2: String 上次线上快递手机号
-   		  		lastName: String 上次线上快递名字，当present_type=0时，必须有值
+	   		  		job: String 职业
+	   		  		address: String 地址
+	   		  		currentPrize: int 用户拥有米粒数目
+	   		  		exchangePrize: int 用户已经兑换米粒数目
+	   		  		newPrize: int 用户新装米粒数目
+	   		  		contPrize：int 用户激活米粒数目
+	   		  		commentPrize: int 用户评价米粒数目
+	   		  		lastCellPhone1: long 上次充值手机号
+	   		  		lastAlipayAccount： String 上次支付宝账号
+	   		  		lastBankAccount: long 上次银行账号
+	   		  		lastBankName: String 上次银行卡开户行
+	   		  		lastAddress: String 上次线上快递地址
+	   		  		lastCellPhone2: String 上次线上快递手机号
+	   		  		lastName: String 上次线上快递名字，当present_type=0时，必须有值
 			   }
 
 	http://localhost:8080/iwami/client/userinfo.ajax
