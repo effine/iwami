@@ -34,12 +34,8 @@ public class StrategyDetailDaoImpl extends JdbcDaoSupport implements StrategyDet
 					si.setIsdel(rs.getInt("isdel"));
 				return si;
 			}
-			
-			
 		});
-		
 		resultMap.put("list", list);
-		
 		return resultMap;
 	}
 }
