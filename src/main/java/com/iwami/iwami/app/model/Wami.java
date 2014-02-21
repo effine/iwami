@@ -11,6 +11,7 @@ public class Wami {
 	private long taskId;
 	private int type;
 	private int prize;
+	private String channel;
 	private long addTime;
 	private long lastmodTime;
 	private int lastmodUserid;
@@ -54,6 +55,14 @@ public class Wami {
 
 	public void setPrize(int prize) {
 		this.prize = prize;
+	}
+
+	public String getChannel() {
+		return channel;
+	}
+
+	public void setChannel(String channel) {
+		this.channel = channel;
 	}
 
 	public long getAddTime() {

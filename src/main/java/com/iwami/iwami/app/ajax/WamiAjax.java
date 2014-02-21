@@ -31,13 +31,18 @@ public class WamiAjax {
 				String channel = params.get("channel");
 				
 				if(wamiBiz.getIdStatus(taskid)){
-					
-					
-					
+					if(wamiBiz.getType()){
+						if(wamiBiz.getUseridStatus(userid)){
+							if(wamiBiz.getTimeStatus()){
+								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
+							}else
+								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_TIME);
+						}else
+							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_USERID);
+					}else
+						result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_TYPE);
 				}else
 					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_TASKID);
-				
-//				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
 			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		} catch (Throwable t) {

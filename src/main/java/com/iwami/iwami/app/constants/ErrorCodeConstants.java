@@ -12,11 +12,12 @@ public class ErrorCodeConstants {
 	public static final int STATUS_PARAM_ERROR = 300;
 	public static final int STATUS_ERROR = 400;
 	
-	public static final int STATUS_ERROR_STATUSUPLOAD_TASKID = 200041;	//TODO wami上传接口
-	public static final int STATUS_ERROR_STATUSUPLOAD_TYPE = 200042;
-	public static final int STATUS_ERROR_STATUSUPLOAD_USERID = 200043;
-	public static final int STATUS_ERROR_STATUSUPLOAD_TIME = 200044;
+	public static final int STATUS_ERROR_STATUSUPLOAD_TASKID = 100041;
+	public static final int STATUS_ERROR_STATUSUPLOAD_TYPE = 100042;
+	public static final int STATUS_ERROR_STATUSUPLOAD_USERID = 100043;
+	public static final int STATUS_ERROR_STATUSUPLOAD_TIME = 100044;
 	
+	/* TODO 错误码重复 */
 	public static final int STATUS_ERROR_ONSTART_USERID = 100041;
 	public static final int STATUS_ERROR_ONSTART_CELLPHONE = 100042;
 	public static final int STATUS_ERROR_ONSTART_UUID = 100043;

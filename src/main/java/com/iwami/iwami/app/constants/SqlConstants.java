@@ -34,5 +34,7 @@ public interface SqlConstants {
 	
 	public static final String TABLE_STRATEGY_RATE = DATABASE + ".`strategy_rate`";
 	
+	public static final String TABLE_TASK = DATABASE + ".`task`";
+	
 
 }
