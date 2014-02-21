@@ -1,14 +1,12 @@
 *.class
 jdbc-mysql.properties
-
-# Package Files #
+# ----- Package Files -----------#
 *.jar
 *.war
 *.ear
 /target
 
-
-# Eclipse Files #
+# --------- Eclipse Files -------- #
 *.classpath
 *.project
 /.settings
