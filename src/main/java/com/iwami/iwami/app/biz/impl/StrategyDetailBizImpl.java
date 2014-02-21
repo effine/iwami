@@ -15,39 +15,56 @@ public class StrategyDetailBizImpl implements StrategyDetailBiz {
 	private StrategyDetailService strategyDetailService;
 
 	@Override
-	public Map<Object, Object> getData(int id, int start, int step) {
+	public Map<Object, Object> getData(long strategyId, int start, int step) {
 		
 		Map<Object,Object> resultMap = new HashMap<Object,Object>();
-		Map<Object,Object> map = strategyDetailService.getData(id, start, step);
-		
-		if((Boolean) map.get("strategyId")){
-			@SuppressWarnings("unchecked")
-			List<StrategyRate> srList = (List<StrategyRate>) map.get("strategyRateList"); 
-			for(StrategyRate sr: srList){
-				if(start == 0){
+		if(this.getIdStatus(strategyId)){
+			if(start == 0){
+				strategyDetailService.updateStrategyRate(strategyId);
+
+				List<StrategyRate> srList = strategyDetailService.getStrategyRate(strategyId);
+				for(StrategyRate sr: srList){
 					resultMap.put("skim", sr.getSkim());
 					resultMap.put("rate", sr.getRate());
 				}
 			}
 			
-			List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-			@SuppressWarnings("unchecked")
-			List<StrategyInfo> siList = (List<StrategyInfo>) map.get("strategyInfoList"); 
+			List<StrategyInfo> siList = strategyDetailService.getStrategyInfo(strategyId, start, step); 
+			List<Map<String,Object>> mapList = new ArrayList<Map<String,Object>>(); 
 			for(StrategyInfo si: siList){
 				Map<String,Object> siMap = new HashMap<String,Object>();
 				siMap.put("id",si.getId());
 				siMap.put("rak",si.getRank());
 				siMap.put("title",si.getTitle());
 				siMap.put("comment",si.getComment());
-				list.add(siMap);
+				mapList.add(siMap);
 			}
-			
-			resultMap.put("count", map.get("count"));
-			resultMap.put("strategyId", map.get("strategyId"));
-			resultMap.put("strategy", list);
-			return resultMap;
-		}else
-			return map;
+			resultMap.put("strategy", mapList);
+			resultMap.put("count", strategyDetailService.countStrategyInfo());
+		}
+		return resultMap;
+	}
+	
+	@Override
+	public boolean getIdStatus(long strategyId) {
+		List<StrategyInfo> status = strategyDetailService.getStatus(strategyId);
+		if(status != null && status.size() > 0)
+			return true;
+		else
+			return false;
+	}
+	
+	@Override
+	public boolean getRateStatus(int start, long strategyId) {
+		int rate = 0;
+		List<StrategyRate> srList = strategyDetailService.getStrategyRate(strategyId);
+		for(StrategyRate sr: srList){
+			rate = sr.getRate();
+		}
+		if(start <= rate)
+			return true;
+		else
+			return false;
 	}
 
 	public StrategyDetailService getStrategyDetailService() {
@@ -58,5 +75,4 @@ public class StrategyDetailBizImpl implements StrategyDetailBiz {
 			StrategyDetailService strategyDetailService) {
 		this.strategyDetailService = strategyDetailService;
 	}
-
 }

@@ -171,7 +171,7 @@
 			   		],
 			   		list: [
 			   			{
-			   				id: int 攻略id
+			   				id: long 攻略id
 			   				name: String 攻略名字
 			   				subname: String 子标题
 			   				intr: String 简介
@@ -188,7 +188,7 @@
 
 8、攻略详情接口
 	接口名字：strategy/detail.ajax
-	输入参数：id：int 攻略id
+	输入参数： id：long 攻略id
 			  start: int 起始攻略数从0开始
 			  step: int 步长
 	输出参数：status：int值  
@@ -222,7 +222,7 @@
 
 9、点赞接口
 	接口名字：strategy/rate.ajax
-	输入参数：id: int 攻略id
+	输入参数：id: long 攻略id
 			  uuid: String字符串  设备唯一ID（小于50个字符） 
 	输出参数：status：int值  
 			  	0: 返回成功

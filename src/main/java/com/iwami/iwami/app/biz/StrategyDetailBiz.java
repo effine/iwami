@@ -4,5 +4,10 @@ import java.util.Map;
 
 public interface StrategyDetailBiz {
 	
-	Map<Object,Object> getData(int id,int start,int step);
+	Map<Object,Object> getData(long strategyId,int start,int step);
+
+	boolean getIdStatus(long strategyId);
+	
+	boolean getRateStatus(int start,long strategyId);
+	
 }

@@ -24,25 +24,24 @@ public class StrategyDetailAjax {
 		
 		try{
 			if(params.containsKey("id") && params.containsKey("start") && params.containsKey("step")){
-				int id = Integer.parseInt(params.get("id"));
+				long strategyId = Long.parseLong(params.get("id"));
 				int start = Integer.parseInt(params.get("start"));
 				int step = Integer.parseInt(params.get("step"));
-				if(start >= 0 ){
-					if(step > 0){
-						Map<Object,Object> map = strategyDetailBiz.getData(id, start, step);
-						
-						if((Boolean) map.get("strategyId")){
-							if(start <= Integer.parseInt(map.get("rate").toString())){
-								result.putAll(map);
+				
+				if(strategyDetailBiz.getIdStatus(strategyId)){
+					if(start >= 0 ){
+						if(step > 0){
+							if(strategyDetailBiz.getRateStatus(start, strategyId)){
+								result.putAll(strategyDetailBiz.getData(strategyId, start, step));
 								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
 							}else
 								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_START1);
 						}else
-							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_ID);
+							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_STEP);
 					}else
-						result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_STEP);
+						result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_START);
 				}else
-					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_START);
+					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_DETAIL_ID);
 			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		}catch(Throwable t){

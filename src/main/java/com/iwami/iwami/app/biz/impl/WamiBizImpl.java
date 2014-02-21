@@ -7,6 +7,14 @@ public class WamiBizImpl  implements WamiBiz {
 	
 	private WamiService wamiService;
 
+
+
+	@Override
+	public boolean getIdStatus(long taskid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 	public WamiService getWamiService() {
 		return wamiService;
 	}

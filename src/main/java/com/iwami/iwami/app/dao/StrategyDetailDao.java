@@ -7,14 +7,14 @@ import com.iwami.iwami.app.model.StrategyRate;
 
 public interface StrategyDetailDao {
 
-	List<StrategyInfo> getStrategyInfo(int id);
+	List<StrategyInfo> getStatus(long strategyId);
 
-	List<StrategyInfo> getStrateInfo(int id, int start, int step);
+	List<StrategyInfo> getStrategyInfo(long strategyId, int start, int step);
 
-	int countStrategyInfo(int id, int start, int step);
+	int countStrategyInfo();
 
-	List<StrategyRate> getStrategyRate();
+	List<StrategyRate> getStrategyRate(long strategyId);
 
-	int updateStrategyRate(int strategyId);
+	int updateStrategyRate(long strategyId);
 
 }

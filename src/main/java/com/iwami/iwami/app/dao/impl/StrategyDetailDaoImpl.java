@@ -15,9 +15,9 @@ import com.iwami.iwami.app.model.StrategyRate;
 public class StrategyDetailDaoImpl extends JdbcDaoSupport implements StrategyDetailDao{
 	
 	@Override
-	public List<StrategyInfo> getStrategyInfo(int id){
+	public List<StrategyInfo> getStatus(long strategyID){
 		String sql = "select strategy_id from " + SqlConstants.TABLE_STRATEGY_INFO +" where strategy_id = ?";
-		List<StrategyInfo> list = getJdbcTemplate().query(sql,new Object[]{id} ,new RowMapper<StrategyInfo>(){
+		List<StrategyInfo> list = getJdbcTemplate().query(sql,new Object[]{strategyID} ,new RowMapper<StrategyInfo>(){
 			@Override
 			public StrategyInfo mapRow(ResultSet rs, int index)
 					throws SQLException {
@@ -38,9 +38,9 @@ public class StrategyDetailDaoImpl extends JdbcDaoSupport implements StrategyDet
 	}
 
 	@Override
-	public List<StrategyInfo> getStrateInfo(int id, int start, int step){
+	public List<StrategyInfo> getStrategyInfo(long strategyId, int start, int step){
 		String sql = "select strategy_id from " + SqlConstants.TABLE_STRATEGY_INFO +" where strategy_id = ? and limit ?,?";
-		List<StrategyInfo> siList = getJdbcTemplate().query(sql,new Object[]{id,start,step}, new RowMapper<StrategyInfo>(){
+		List<StrategyInfo> siList = getJdbcTemplate().query(sql,new Object[]{strategyId,start,step}, new RowMapper<StrategyInfo>(){
 			@Override
 			public StrategyInfo mapRow(ResultSet rs, int index) throws SQLException {
 				StrategyInfo si = new StrategyInfo();
@@ -59,16 +59,16 @@ public class StrategyDetailDaoImpl extends JdbcDaoSupport implements StrategyDet
 	}
 	
 	@Override
-	public int countStrategyInfo(int id, int start, int step) {
+	public int countStrategyInfo() {
 			String cSql = "select count(*) from " + SqlConstants.TABLE_STRATEGY_INFO;
 		return getJdbcTemplate().queryForInt(cSql);
 	}
 	
 	
 	@Override
-	public List<StrategyRate> getStrategyRate(){
-		String  srSql = "select * from " + SqlConstants.TABLE_STRATEGY_RATE;
-		List<StrategyRate> list = getJdbcTemplate().query(srSql,new RowMapper<StrategyRate>(){
+	public List<StrategyRate> getStrategyRate(long strategyId){
+		String  srSql = "select * from " + SqlConstants.TABLE_STRATEGY_RATE +" where strategy_id = ? ";
+		List<StrategyRate> list = getJdbcTemplate().query(srSql,new Object[]{strategyId},new RowMapper<StrategyRate>(){
 			@Override
 			public StrategyRate mapRow(ResultSet rs, int index) throws SQLException {
 				StrategyRate sr = new StrategyRate();
@@ -83,7 +83,7 @@ public class StrategyDetailDaoImpl extends JdbcDaoSupport implements StrategyDet
 	}
 	
 	@Override
-	public int updateStrategyRate(int strategyId){
+	public int updateStrategyRate(long strategyId){
 			String opSql = "update " + SqlConstants.TABLE_STRATEGY_RATE + " set skim = (skim+1) where strategy_id = ?" ;
 		return getJdbcTemplate().update(opSql, new Object[]{strategyId});
 	}
