@@ -126,6 +126,16 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 			return null;
 	}
 
+	@Override
+	public boolean getUseridStatus(int userid) {
+		String sql = "select * from " + SqlConstants.TABLE_USERINFO + " a inner join " + SqlConstants.TABLE_WAMI + " b on a.userid = b.userid where a.userid = ?";
+		int line = getJdbcTemplate().queryForInt(sql,new Object[]{userid});
+		if(line > 0)
+			return true;
+		else
+			return false;
+	}
+
 }
 
 class UserRowMapper implements RowMapper<User>{

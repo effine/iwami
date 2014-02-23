@@ -24,5 +24,7 @@ public interface UserDao {
 	public boolean updateUser4Register(User user);
 
 	public boolean modifyUserInfo4Register(User user);
+	
+	boolean getUseridStatus(int userid);
 
 }

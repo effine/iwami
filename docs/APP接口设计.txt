@@ -146,7 +146,7 @@
 	后端逻辑: wami表的prize从task表对应taskid获取prize
 			  验证userid合法性（是否存在）
 			  taskid验证
-			  type=4需要更新task的current_prize和user的current_prize,更新user表current_prize
+			  type=4需要更新task的current_prize和user的current_prize
 			  需要使用事务来操作
 
 
