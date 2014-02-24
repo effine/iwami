@@ -10,8 +10,8 @@ import com.iwami.iwami.app.service.WamiService;
 public class WamiServiceImpl implements WamiService {
 
 	private WamiDao wamiDao;
-	private TaskDao taskDao;
-	private UserDao userDao;
+	private TaskDao taskDao;	//TODO 没有添加 applicationCantext.xml \ applicationContext-db.xml
+	private UserDao userDao;	//TODO 没有添加 applicationCantext.xml \ applicationContext-db.xml
 
 	
 	public WamiDao getWamiDao() {

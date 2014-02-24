@@ -4,7 +4,5 @@ public interface StrategyRateBiz {
 	
 	boolean getIdStatus(long strategyId);
 	
-	boolean getUuidStatus(String uuid);
-	
-	boolean getRepeatStatus();
+	boolean getRepeatStatus(long strategyId,String uuid);
 }

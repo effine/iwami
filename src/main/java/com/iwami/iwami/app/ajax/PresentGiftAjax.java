@@ -3,6 +3,9 @@ package com.iwami.iwami.app.ajax;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.iwami.iwami.app.biz.PresentGiftBiz;
 import com.iwami.iwami.app.common.dispatch.AjaxClass;
 import com.iwami.iwami.app.common.dispatch.AjaxMethod;
@@ -11,6 +14,7 @@ import com.iwami.iwami.app.constants.ErrorCodeConstants;
 @AjaxClass
 public class PresentGiftAjax {
 
+	private Log logger = LogFactory.getLog(getClass());
 	private PresentGiftBiz presentGiftBiz;
 	
 	@AjaxMethod(path = "present/gift.ajax")
@@ -19,25 +23,13 @@ public class PresentGiftAjax {
 		try {
 			boolean isExist = params.containsKey("userid") && params.containsKey("taskid") && params.containsKey("type") && params.containsKey("time") && params.containsKey("channel");
 			if(isExist){
-				int userid = Integer.parseInt(params.get("userid"));
-				long taskid = Long.parseLong(params.get("taskid"));
-				int type = Integer.parseInt(params.get("type"));
-				long time = Long.parseLong(params.get("type"));
-				String channel = params.get("channel");
 				
-				if(wamiBiz.getIdStatus(taskid)){
-					if(wamiBiz.getType()){
-						if(wamiBiz.getUseridStatus(userid)){
-							if(wamiBiz.getTimeStatus()){
-								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
-							}else
-								result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_TIME);
-						}else
-							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_USERID);
-					}else
-						result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_TYPE);
-				}else
-					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STATUSUPLOAD_TASKID);
+				
+				
+				
+				
+				
+				
 			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		} catch (Throwable t) {

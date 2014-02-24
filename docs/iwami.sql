@@ -145,7 +145,7 @@ create table present (
 	name varchar(255) not null comment "礼品名字",
 	prize int(10) not null default 0 comment "所需米粒数",
 	rank int(10)  not null comment  "顺序",
-	type tinyint(3) not null comment "类型：0线上快递，1线上手机充值卡，2线上支付宝，3线上银行卡，4线下",
+	type tinyint(3) not null comment "类型：0线上快递，1线上手机充值卡，2线上支付宝，3线上银行卡，4线下,5抽奖",
 	icon_small varchar(255) not null  comment "Icon小图",
 	icon_big varchar(255)  comment "Icon大图",
 	lastmod_time datetime not null comment "上次修改时间",

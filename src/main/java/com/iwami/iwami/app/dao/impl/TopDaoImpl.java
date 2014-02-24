@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
+import com.iwami.iwami.app.constants.SqlConstants;
 import com.iwami.iwami.app.dao.TopDao;
 import com.iwami.iwami.app.model.Top;
 
@@ -14,7 +15,7 @@ public class TopDaoImpl extends JdbcDaoSupport implements TopDao {
 
 	@Override
 	public List<Top> getTop() {
-		String sql ="select * from iwami.task where (type & 8) = 8 and isdel = 0 order by rank asc";
+		String sql ="select * from " + SqlConstants.TABLE_TASK + " where (type & 8) = 8 and isdel = 0 order by rank asc";
 		List<Top> list = getJdbcTemplate().query(sql,new RowMapper<Top>(){
 			
 			int i = 0;

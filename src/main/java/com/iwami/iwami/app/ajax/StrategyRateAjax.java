@@ -28,20 +28,23 @@ public class StrategyRateAjax {
 				String uuid = params.get("uuid");
 				
 				if(strategyRateBiz.getIdStatus(strategyId)){
-					if(strategyRateBiz.getUuidStatus(uuid)){
-						if(strategyRateBiz.getRepeatStatus()){
+					if(uuid != null && "".equals(uuid.trim())){
+						if(strategyRateBiz.getRepeatStatus(strategyId, uuid)){
 							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
 						}else
 							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_RATE_REPEAT);
+						result.put(ErrorCodeConstants.MSG_KEY, ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_ERROR_STRATEGY_RATE_REPEAT));
 					}else
 						result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_RATE_UUID);
+						result.put(ErrorCodeConstants.MSG_KEY, ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_ERROR_STRATEGY_RATE_UUID));
 				}else
 					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_STRATEGY_RATE_ID);
+					result.put(ErrorCodeConstants.MSG_KEY, ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_ERROR_STRATEGY_RATE_ID));
 			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		}catch(Throwable t){
 			if(logger.isErrorEnabled()){
-				logger.error("Exception in strateDetail ",t);
+				logger.error("Exception in strategyRate ",t);
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}

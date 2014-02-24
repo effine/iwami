@@ -1,5 +1,7 @@
 package com.iwami.iwami.app.dao;
 
+import java.util.List;
+
 import com.iwami.iwami.app.model.Task;
 
 
@@ -9,6 +11,6 @@ public interface TaskDao {
 	
 	Task getPrize(long taskid);
 	
-	
+	List<Task> getTask(int type);
 
 }

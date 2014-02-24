@@ -26,5 +26,7 @@ public interface UserDao {
 	public boolean modifyUserInfo4Register(User user);
 	
 	boolean getUseridStatus(int userid);
+	
+	int getPrize(long userid);
 
 }

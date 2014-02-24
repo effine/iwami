@@ -74,6 +74,15 @@
 	<bean name="strategyDetailAjax" class="com.iwami.iwami.app.ajax.StrategyDetailAjax">
 		<property name="strategyDetailBiz" ref="strategyDetailBiz"></property>
 	</bean>
+	<bean name="strategyRateAjax" class="com.iwami.iwami.app.ajax.StrategyRateAjax">
+		<property name="strategyRateBiz" ref="strategyRateBiz"></property>
+	</bean>
+	<bean name="wamiAjax" class="com.iwami.iwami.app.ajax.WamiAjax">
+		<property name="wamiBiz" ref="wamiBiz"></property>
+	</bean>
+	<bean name="presentListAjax" class="com.iwami.iwami.app.ajax.PresentListAjax">
+		<property name="presentListBiz" ref="presentListBiz"></property>
+	</bean>
 	
 
 	
@@ -119,6 +128,15 @@
 	<bean name="strategyDetailBiz" class="com.iwami.iwami.app.biz.impl.StrategyDetailBizImpl">
 		<property name="strategyDetailService" ref="strategyDetailService" />
 	</bean>
+	<bean name="strategyRateBiz" class="com.iwami.iwami.app.biz.impl.StrategyRateBizImpl">
+		<property name="rateInfoService" ref="rateInfoService" />
+	</bean>
+	<bean name="wamiBiz" class="com.iwami.iwami.app.biz.impl.WamiBizImpl">
+		<property name="wamiService" ref="wamiService" />
+	</bean>
+	<bean name="presentListBiz" class="com.iwami.iwami.app.biz.impl.PresentListBizImpl">
+		<property name="presentListService" ref="presentListService" />
+	</bean>
 	
 	
 	
@@ -159,6 +177,16 @@
 	</bean>
 	<bean name="strategyDetailService" class="com.iwami.iwami.app.service.impl.StrategyDetailServiceImpl">
 		<property name="strategyDetailDao" ref="strategyDetailDao" />
+	</bean>
+	<bean name="rateInfoService" class="com.iwami.iwami.app.service.impl.RateInfoServiceImpl">
+		<property name="rateInfoDao" ref="rateInfoDao" />
+	</bean>
+	<bean name="wamiService" class="com.iwami.iwami.app.service.impl.WamiServiceImpl">
+		<property name="wamiDao" ref="wamiDao" />
+	</bean>
+	<bean name="presentListService" class="com.iwami.iwami.app.service.impl.PresentListServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="presentDao" ref="presentDao" />
 	</bean>
 	
 	

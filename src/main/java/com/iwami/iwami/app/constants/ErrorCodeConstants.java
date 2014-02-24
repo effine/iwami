@@ -33,6 +33,9 @@ public class ErrorCodeConstants {
 	public static final int STATUS_ERROR_STRATEGY_RATE_UUID = 100072;
 	public static final int STATUS_ERROR_STRATEGY_RATE_REPEAT = 100073;
 	
+	public static final int STATUS_ERROR_PRESENT_LIST_START = 100131;
+	public static final int STATUS_ERROR_PRESENT_LIST_STEP = 100132;
+	
 	public static final int STATUS_ERROR_LUCKY_DRAW_USERID = 100191;
 	public static final int STATUS_ERROR_LUCKY_DRAW_PRIZE = 100192;
 	public static final int STATUS_ERROR_LUCKY_DRAW_COUNT = 100193;
@@ -91,5 +94,13 @@ public class ErrorCodeConstants {
 		ERROR_MSG_MAP.put(STATUS_ERROR_STRATEGY_DETAIL_START, "起始攻略数小于0");
 		ERROR_MSG_MAP.put(STATUS_ERROR_STRATEGY_DETAIL_STEP, "步长不大于0");
 		ERROR_MSG_MAP.put(STATUS_ERROR_STRATEGY_DETAIL_START1, "起始攻略数大于评论总数");
+		
+		ERROR_MSG_MAP.put(STATUS_ERROR_STRATEGY_RATE_ID, "攻略id不存在");
+		ERROR_MSG_MAP.put(STATUS_ERROR_STRATEGY_RATE_UUID, "uuid为空");
+		ERROR_MSG_MAP.put(STATUS_ERROR_STRATEGY_RATE_REPEAT, "点赞重复");
+		
+		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_LIST_START, "起始攻略数小于0");
+		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_LIST_STEP, "步长不大于0");
+		
 	}
 }

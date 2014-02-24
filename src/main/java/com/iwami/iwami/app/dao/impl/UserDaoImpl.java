@@ -136,6 +136,23 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 			return false;
 	}
 
+	@Override
+	public int getPrize(long userid) {
+		String sql = "select prize from " + SqlConstants.TABLE_USER + " where id = ?";
+		List<User> list =  getJdbcTemplate().query(sql,new Object[]{userid},new RowMapper<User>(){
+			@Override
+			public User mapRow(ResultSet rs, int index) throws SQLException {
+				User user = new User();
+				user.setCurrentPrize(rs.getInt("current_prize"));
+				return user;
+			}
+		});
+		
+		if(list != null && list.size() > 0)
+			return list.get(0).getCurrentPrize();
+		else
+			return 0;
+	}
 }
 
 class UserRowMapper implements RowMapper<User>{

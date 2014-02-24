@@ -234,7 +234,8 @@
 			  	其他：具体某种类型错误，此时需要读取msg错误信息（提示用户）
 			   msg: 具体错误信息	
 	后端逻辑: 插入rate_info表，如捕获到unique异常返回100073
-			  返回正常则更新rate_info表（rate_info表skim+1），需要添加事务
+			  // TODO 返回正常则更新rate_info表（rate_info表skim+1），需要添加事务	
+			  返回正常则更新rate_info表（strategy_rate表skim+1），需要添加事务
 
 
 
@@ -248,6 +249,31 @@
 			  	其他：具体某种类型错误，此时需要读取msg错误信息（提示用户）
 			   msg: 具体错误信息
 			   new: [  最新任务
+			   		{
+			   			id: long 任务id
+			   			name: String app名字
+			   			rank: int 顺序
+				   	 	size: double  app大小（单位：KB）
+			   	 		intr: String  任务简介
+			   	 		appintr: String  app简介
+				   	 	prize: int  米粒数
+				   	 	type: int 任务类型: 0普通任务，1宝箱任务
+				   	 	available: int  是否抢光: 0未抢光，1抢光		//TODO  task表不存在该字段
+				   	 	background: int 是否后台运行: 0不需要,1需要
+				   	 	register: int 是否需要注册: 0不需要,
+				   	 	time: int 运行时间（单位：秒）
+				   	 	iconGray: String Icon灰图
+				   	 	iconSmall: String Icon小图
+						iconBig: String Icon大图
+						lastmodtime: long 修改时间
+
+			   		},
+			   		......
+			   		{}
+
+			   ]
+			   ongoing: [ 进行中的任务，按照“已经正在下载中--下载完等待执行--执行中”三个分类进行排序，
+			   每一分类下按照用户开始执行任务的时间进行倒序排序
 			   		{
 			   			id: int 任务id
 			   			name: String app名字
@@ -265,30 +291,6 @@
 				   	 	iconSmall: String Icon小图
 						iconBig: String Icon大图
 						lastmodtime: long 修改时间
-
-			   		},
-			   		......
-			   		{}
-
-			   ]
-			   ongoing: [ 进行中的任务，按照“已经下载完等待执行-正在下载中-正在执行中”三个分类进行排序，每一分类下按照用户开始执行任务的时间进行倒序排序
-			   		{
-			   			id: int 任务id
-			   			name: String app名字
-			   			rank: int 顺序
-				   	 	size: double  app大小（单位：KB）
-			   	 	intr: String  任务简介
-			   	 	appintr: String  app简介
-				   	 	prize: int  米粒数
-				   	 	type: int 任务类型: 0普通任务，1宝箱任务
-				   	 	available: int  是否抢光: 0未抢光，1抢光
-				   	 	background: int 是否后台运行: 0不需要,1需要
-				   	 	register: int 是否需要注册: 0不需要,
-				   	 	time: int 运行时间（单位：秒）
-				   	 	iconGray: String Icon灰图
-				   	 	iconSmall: String Icon小图
-							iconBig: String Icon大图
-							lastmodtime: long 修改时间
 			   		},
 			   		......
 			   		{}
@@ -300,8 +302,8 @@
 			   			name: String app名字
 			   			rank: int 顺序
 				   	 	size: double  app大小（单位：KB）
-			   	 	intr: String  任务简介
-			   	 	appintr: String  app简介
+			   	 		intr: String  任务简介
+			   	 		appintr: String  app简介
 				   	 	prize: int  米粒数
 				   	 	type: int 任务类型: 0普通任务，1宝箱任务
 				   	 	available: int  是否抢光: 0未抢光，1抢光
@@ -310,8 +312,8 @@
 				   	 	time: int 运行时间（单位：秒）
 				   	 	iconGray: String Icon灰图
 				   	 	iconSmall: String Icon小图
-							iconBig: String Icon大图
-							lastmodtime: long 修改时间
+						iconBig: String Icon大图
+						lastmodtime: long 修改时间
 
 			   		},
 			   		......
@@ -370,15 +372,15 @@
 
 12、礼品列表接口
  	接口名字：present/list.ajax
-	输入参数：userid:  int  用户ID
-				start: int 起始攻略数从0开始
+	输入参数：userid:  long  用户ID
+			  start: int 起始攻略数从0开始
 			  step: int 步长
 	输出参数：status：int值  
 			  	0: 返回成功
 			  	300： 缺少参数
 			  	400： 后端错误
-			  	100131: start必须大于等于0
-			  	100132: step必须大于0
+			  	100131: start小于0
+			  	100132: step小于等于0
 			  	其他：具体某种类型错误，此时需要读取msg错误信息（提示用户）
 			   msg: 具体错误信息
 			   data: [
