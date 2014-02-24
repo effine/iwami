@@ -234,7 +234,6 @@
 			  	其他：具体某种类型错误，此时需要读取msg错误信息（提示用户）
 			   msg: 具体错误信息	
 	后端逻辑: 插入rate_info表，如捕获到unique异常返回100073
-			  // TODO 返回正常则更新rate_info表（rate_info表skim+1），需要添加事务	
 			  返回正常则更新rate_info表（strategy_rate表skim+1），需要添加事务
 
 

@@ -26,8 +26,7 @@ public class StrategyRateBizImpl implements StrategyRateBiz {
 		RateInfo ri = new RateInfo();
 		ri.setStrategyId(strategyId);
 		ri.setUuid(uuid);
-		ri.setLastmodTime(0);	//TODO 上次修改时间
-		ri.setIsdel(0);	//TODO 是否删除
+		ri.setLastmodTime(System.currentTimeMillis());
 		
 		return rateInfoService.pointPraise(ri);
 	}
