@@ -36,6 +36,8 @@ public class ErrorCodeConstants {
 	public static final int STATUS_ERROR_PRESENT_LIST_START = 100131;
 	public static final int STATUS_ERROR_PRESENT_LIST_STEP = 100132;
 	
+	public static final int STATUS_ERROR_GIFT_HISTORY_USERID = 100161;
+	
 	public static final int STATUS_ERROR_LUCKY_DRAW_USERID = 100191;
 	public static final int STATUS_ERROR_LUCKY_DRAW_PRIZE = 100192;
 	public static final int STATUS_ERROR_LUCKY_DRAW_COUNT = 100193;
@@ -101,6 +103,8 @@ public class ErrorCodeConstants {
 		
 		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_LIST_START, "起始攻略数小于0");
 		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_LIST_STEP, "步长不大于0");
+		
+		ERROR_MSG_MAP.put(STATUS_ERROR_GIFT_HISTORY_USERID, "用户id不存在");
 		
 	}
 }

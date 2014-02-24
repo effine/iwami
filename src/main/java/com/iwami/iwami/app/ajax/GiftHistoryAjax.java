@@ -21,19 +21,20 @@ public class GiftHistoryAjax {
 	public Map<Object, Object> statusUpload(Map<String,String> params) {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		try {
-			boolean isExist = params.containsKey("userid") && params.containsKey("taskid") && params.containsKey("type") && params.containsKey("time") && params.containsKey("channel");
+			boolean isExist = params.containsKey("userid");
 			if(isExist){
-				
-				
-				
-				
-				
-				
+				long userid = Long.parseLong(params.get("userid"));
+				if(giftHistoryBiz.getIdStatus(userid)){
+					result.putAll(giftHistoryBiz.getData());
+					result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_OK);
+				}else
+					result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR_GIFT_HISTORY_USERID);
+					result.put(ErrorCodeConstants.MSG_KEY, ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_ERROR_GIFT_HISTORY_USERID));
 			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		} catch (Throwable t) {
 			if (logger.isErrorEnabled()) {
-				logger.error("Exception in wami", t);
+				logger.error("Exception in gift/history ", t);
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}

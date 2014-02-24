@@ -458,7 +458,7 @@
 
 15、礼品兑换历史接口
  	接口名字：gift/history.ajax
-	输入参数：userid: int 用户id
+	输入参数：userid: long 用户id
 	输出参数：status：int值  
 			  	0: 返回成功
 			  	300： 缺少参数
