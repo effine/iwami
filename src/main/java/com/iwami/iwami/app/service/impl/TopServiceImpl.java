@@ -2,24 +2,25 @@ package com.iwami.iwami.app.service.impl;
 
 import java.util.List;
 
-import com.iwami.iwami.app.dao.TopDao;
-import com.iwami.iwami.app.model.Top;
+import com.iwami.iwami.app.dao.TaskDao;
+import com.iwami.iwami.app.model.Task;
 import com.iwami.iwami.app.service.TopService;
 
 public class TopServiceImpl implements TopService{
 	
-	private TopDao topDao;
+	private TaskDao taskDao;
 
 	@Override
-	public List<Top> getTop() {
-		return topDao.getTop();
+	public List<Task> getTask() {
+		return taskDao.getTask();
 	}
 
-	public TopDao getTopDao() {
-		return topDao;
+	public TaskDao getTaskDao() {
+		return taskDao;
 	}
 
-	public void setTopDao(TopDao topDao) {
-		this.topDao = topDao;
+	public void setTaskDao(TaskDao taskDao) {
+		this.taskDao = taskDao;
 	}
+
 }

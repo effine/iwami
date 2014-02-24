@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface TopBiz {
 	
-	public Map<Object,Object> getTop();
+	public Map<String,Object> getTask();
 	
 }

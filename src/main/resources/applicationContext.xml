@@ -170,7 +170,7 @@
 		<property name="tipsDao" ref="tipsDao" />
 	</bean>
 	<bean name="topService" class="com.iwami.iwami.app.service.impl.TopServiceImpl">
-		<property name="topDao" ref="topDao" />
+		<property name="taskDao" ref="taskDao" />
 	</bean>
 	<bean name="wamiService" class="com.iwami.iwami.app.service.impl.WamiServiceImpl">
 		<property name="wamiDao" ref="wamiDao" />

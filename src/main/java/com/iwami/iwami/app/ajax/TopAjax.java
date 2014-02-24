@@ -22,14 +22,12 @@ public class TopAjax {
 	public Map<Object, Object> top() {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		try {
-			result = topBiz.getTop();
-			result.put(ErrorCodeConstants.STATUS_KEY,
-					ErrorCodeConstants.STATUS_OK);
+			result.putAll(topBiz.getTask());
+			result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
 		} catch (Throwable t) {
 			if (logger.isErrorEnabled()) {
 				logger.error("Exception in top", t);
-				result.put(ErrorCodeConstants.STATUS_KEY,
-						ErrorCodeConstants.STATUS_ERROR);
+				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}
 		return result;

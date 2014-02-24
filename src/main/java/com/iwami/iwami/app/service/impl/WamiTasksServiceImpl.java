@@ -19,7 +19,7 @@ public class WamiTasksServiceImpl implements WamiTasksService {
 	}
 
 	@Override
-	public List<Task> getTask(int type) {
-		return taskDao.getTask(type);
+	public List<Task> getOrdinaryTask() {
+		return taskDao.getOrdinaryTask();
 	}
 }

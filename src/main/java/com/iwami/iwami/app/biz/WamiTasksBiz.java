@@ -5,4 +5,5 @@ import java.util.Map;
 public interface WamiTasksBiz {
 
 	Map<String,Object> getData();
+	
 }

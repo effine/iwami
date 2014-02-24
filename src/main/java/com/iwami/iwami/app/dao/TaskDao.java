@@ -11,6 +11,7 @@ public interface TaskDao {
 	
 	Task getPrize(long taskid);
 	
-	List<Task> getTask(int type);
+	List<Task> getOrdinaryTask();
 
+	List<Task> getTask();
 }

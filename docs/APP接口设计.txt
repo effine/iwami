@@ -98,23 +98,7 @@
 
 			   	 },
 			   	  ......
-			   	 {
-			   	 	id: int类型  金榜任务id 
-			   	 	name: String类型  app名字
-			   	 	rank: int类型   顺序
-			   	 	size: double  app大小（单位：KB）
-			   	 	intr: String  任务简介
-			   	 	appintr: String  app简介
-			   	 	prize: int  米粒数
-			   	 	available: int  是否抢光: 0未抢光，1抢光
-			   	 	background: int 是否后台运行: 0不需要,1需要
-			   	 	register: int 是否需要注册: 0不需要,1需要
-			   	 	time: int 运行时间（单位：秒）
-			   	 	star: int 星级数
-			   	 	reputation：int 好评数
-			   	 	iconSmall: String Icon小图
-					iconBig: String Icon大图
-			   	 }
+			   	 { }
 			   ] ,
 			   time: long  金榜最新更新时间(单位：毫秒)
 
@@ -421,14 +405,14 @@
 			   			prize: int 用户现在拥有的米粒数
 			   	}
 
-	后端逻辑: (1)插入exchange表
+	后端逻辑: (1)插入exchange表		
 				 1> present_id为被赠送方的用户id
 				 2> present_name为"赠"加上被赠送方的用户名
 				 3> present_prize为-1
 				 4> present_type=5
 				 5> prize为赠送的米粒数
 				 6> status值为0
-			   (2)从赠送方的user表current_prize减去米粒数，exchange加上米粒数
+			   (2)从赠送方的user表current_prize减去米粒数，exchange加上米粒数	//TODO 上面已完成
 			     1> update语句的时候必须加where条件: 当前用户的current_prize大于等于减去的米粒数
 			     2> 如update返回影响行数为0，则更新第一条status值为1，返回100143错误，并回滚事务
 			   (3)从被赠送放得user表current_prize加上米粒数

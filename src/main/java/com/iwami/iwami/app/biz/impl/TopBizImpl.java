@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.iwami.iwami.app.biz.TopBiz;
-import com.iwami.iwami.app.model.Top;
+import com.iwami.iwami.app.model.Task;
 import com.iwami.iwami.app.service.TopService;
 
 public class TopBizImpl implements TopBiz {
@@ -15,9 +15,9 @@ public class TopBizImpl implements TopBiz {
 	private TopService topService;
 
 	@Override
-	public Map<Object,Object> getTop() {
-		Map<Object,Object> result = new HashMap<Object,Object>();
-		List<Top> list = topService.getTop();
+	public Map<String,Object> getTask() {
+		Map<String,Object> result = new HashMap<String,Object>();
+		List<Task> list = topService.getTask();
 		List<Map<String,Object>> beanList = new ArrayList<Map<String,Object>>();
 		
 		long currTime = System.currentTimeMillis();
@@ -25,35 +25,35 @@ public class TopBizImpl implements TopBiz {
 		long time = 0 ;
 		
 		if(list !=null  && list.size() > 0){ 	 
-			for(Top top: list){
-				if(currTime < top.getStartTime())
-					list.remove(top);
-				if(top.getEndTime() != 0 && currTime > top.getEndTime())
-					list.remove(top);
-				if(top.getMaxPrize()>0 && top.getMaxPrize() > top.getCurrentPrize()){
+			for(Task task: list){
+				if(currTime < task.getStartTime())
+					list.remove(task);
+				if(task.getEndTime() != 0 && currTime > task.getEndTime())
+					list.remove(task);
+				if(task.getMaxPrize()>0 && task.getMaxPrize() > task.getCurrentPrize()){
 					available = 1;
 				}else{
 					available = 0;
 				}
-				if( top.getLastmodTime() > time){
-					time = top.getLastmodTime();
+				if( task.getLastmodTime() > time){
+					time = task.getLastmodTime();
 				}
 				
 				Map<String,Object> beanMap =new HashMap<String,Object>();
-				beanMap.put("id", top.getId());
-				beanMap.put("name", top.getName());
-				beanMap.put("rank", top.getRank());
-				beanMap.put("size", top.getSize());
-				beanMap.put("intr", top.getIntr());
-				beanMap.put("prize", top.getPrize());
+				beanMap.put("id", task.getId());
+				beanMap.put("name", task.getName());
+				beanMap.put("rank", task.getRank());
+				beanMap.put("size", task.getSize());
+				beanMap.put("intr", task.getIntr());
+				beanMap.put("prize", task.getPrize());
 				beanMap.put("available", available);
-				beanMap.put("background", top.getBackground());
-				beanMap.put("register", top.getRegister());
-				beanMap.put("time", top.getTime());
-				beanMap.put("star", top.getStar());
-				beanMap.put("reputation", top.getReputation());
-				beanMap.put("iconSmall", top.getIconSmall());
-				beanMap.put("iconBig", top.getIconBig());
+				beanMap.put("background", task.getBackground());
+				beanMap.put("register", task.getRegister());
+				beanMap.put("time", task.getTime());
+				beanMap.put("star", task.getStar());
+				beanMap.put("reputation", task.getReputation());
+				beanMap.put("iconSmall", task.getIconSmall());
+				beanMap.put("iconBig", task.getIconBig());
 				beanList.add(beanMap);
 			}
 		}

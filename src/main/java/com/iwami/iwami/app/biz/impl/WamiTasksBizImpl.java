@@ -1,5 +1,6 @@
 package com.iwami.iwami.app.biz.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,14 +22,26 @@ public class WamiTasksBizImpl implements WamiTasksBiz {
 
 	@Override
 	public Map<String, Object> getData() {
+		Map<String,Object> map = new HashMap<String,Object>();
+		long currTime = System.currentTimeMillis();
+		int available = 0;
+		List<Task> tlist = wamiTasksService.getOrdinaryTask();
+		for(Task t: tlist){
+			if(currTime < t.getStartTime())
+				tlist.remove(t);
+			if(t.getEndTime() != 0 && currTime > t.getEndTime())
+				tlist.remove(t);
+			if(t.getMaxPrize() > 0){
+				if(t.getMaxPrize() > t.getCurrentPrize())
+					available = 0;
+				else
+					available = 1;
+			}
+		}
 		
-		int type = 1 ;	/*  普通任务： 二进制第一位  */
-		List<Task> tlist = wamiTasksService.getTask(type);
+		map.put("days", null);
+		map.put("count", null);
 		
-		
-		
-		
-		
-		return null;
+		return map;
 	}
 }
