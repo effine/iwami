@@ -83,6 +83,9 @@
 	<bean name="presentListAjax" class="com.iwami.iwami.app.ajax.PresentListAjax">
 		<property name="presentListBiz" ref="presentListBiz"></property>
 	</bean>
+	<bean name="giftHistoryAjax" class="com.iwami.iwami.app.ajax.GiftHistoryAjax">
+		<property name="giftHistoryBiz" ref="giftHistoryBiz"></property>
+	</bean>
 	
 
 	
@@ -137,6 +140,9 @@
 	<bean name="presentListBiz" class="com.iwami.iwami.app.biz.impl.PresentListBizImpl">
 		<property name="presentListService" ref="presentListService" />
 	</bean>
+	<bean name="giftHistoryBiz" class="com.iwami.iwami.app.biz.impl.GiftHistoryBizImpl">
+		<property name="giftHistoryService" ref="giftHistoryService" />
+	</bean>
 	
 	
 	
@@ -187,6 +193,10 @@
 	<bean name="presentListService" class="com.iwami.iwami.app.service.impl.PresentListServiceImpl">
 		<property name="userDao" ref="userDao" />
 		<property name="presentDao" ref="presentDao" />
+	</bean>
+	<bean name="giftHistoryService" class="com.iwami.iwami.app.service.impl.GiftHistoryServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="exchangeDao" ref="exchangeDao" />
 	</bean>
 	
 	

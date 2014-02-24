@@ -4,8 +4,8 @@ import java.util.Map;
 
 public interface GiftHistoryBiz {
 
-	boolean getIdStatus(long userid);
+	boolean getUseridStatus(long userid);
 	
-	Map<String,Object> getData();
+	Map<String,Object> getData(long userid);
 	
 }

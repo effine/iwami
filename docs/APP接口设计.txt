@@ -474,7 +474,7 @@
 				   				time:  -- long 时间
 					   			type：int 0线上快递，1线上手机充值卡，2线上支付宝，3线上银行卡，4线下
 					   			express：快递单号
-					   			status：未发货，已发货，现场兑换
+					   			status：未发货，已发货，现场兑换	//TODO 数据库表exchange没有对应字段
 					   			gifts：	[
 						   				{
 						   					name: String 礼品名字

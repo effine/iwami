@@ -30,7 +30,7 @@ public class PresentListServiceImpl implements PresentListService {
 
 	@Override
 	public int getPrize(long userid) {
-		return userDao.getPrize(userid);
+		return userDao.getPrize(userid).getCurrentPrize();
 	}
 
 	@Override

@@ -40,5 +40,7 @@ public interface SqlConstants {
 	
 	public static final String TABLE_PRESENT = DATABASE + ".`present`";
 	
+	public static final String TABLE_EXCHANGE = DATABASE + ".`exchange`";
+	
 
 }

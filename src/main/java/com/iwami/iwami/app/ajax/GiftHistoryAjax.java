@@ -24,8 +24,8 @@ public class GiftHistoryAjax {
 			boolean isExist = params.containsKey("userid");
 			if(isExist){
 				long userid = Long.parseLong(params.get("userid"));
-				if(giftHistoryBiz.getIdStatus(userid)){
-					result.putAll(giftHistoryBiz.getData());
+				if(giftHistoryBiz.getUseridStatus(userid)){
+					result.putAll(giftHistoryBiz.getData(userid));
 					result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_OK);
 				}else
 					result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR_GIFT_HISTORY_USERID);
