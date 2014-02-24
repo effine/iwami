@@ -7,7 +7,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 public class Exchange {
 
 	private long id;
-	private int userid;
+	private long userid;
 	private long presentid;
 	private String presentName;
 	private int presentPrize;
@@ -34,11 +34,11 @@ public class Exchange {
 		this.id = id;
 	}
 
-	public int getUserid() {
+	public long getUserid() {
 		return userid;
 	}
 
-	public void setUserid(int userid) {
+	public void setUserid(long userid) {
 		this.userid = userid;
 	}
 

@@ -36,6 +36,10 @@ public class ErrorCodeConstants {
 	public static final int STATUS_ERROR_PRESENT_LIST_START = 100131;
 	public static final int STATUS_ERROR_PRESENT_LIST_STEP = 100132;
 	
+	public static final int STATUS_ERROR_PRESENT_GIFT_USERID = 100141;
+	public static final int STATUS_ERROR_PRESENT_GIFT_CELLPHONE = 100142;
+	public static final int STATUS_ERROR_PRESENT_GIFT_PRIZE = 100143;
+	
 	public static final int STATUS_ERROR_GIFT_HISTORY_USERID = 100161;
 	
 	public static final int STATUS_ERROR_LUCKY_DRAW_USERID = 100191;
@@ -105,6 +109,10 @@ public class ErrorCodeConstants {
 		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_LIST_STEP, "步长不大于0");
 		
 		ERROR_MSG_MAP.put(STATUS_ERROR_GIFT_HISTORY_USERID, "用户id不存在");
+		
+		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_GIFT_USERID, "用户id不存在");
+		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_GIFT_CELLPHONE, "被赠送方手机号未注册");
+		ERROR_MSG_MAP.put(STATUS_ERROR_PRESENT_GIFT_PRIZE, "赠送米粒数小于用户的米粒数");
 		
 	}
 }

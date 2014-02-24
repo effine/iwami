@@ -28,5 +28,9 @@ public interface UserDao {
 	boolean getUseridStatus(long userid);
 	
 	User getPrize(long userid);
+	
+	boolean getCellphoneStatus(long cellPhone);
+
+	User getUserByCellphone(long cellPhone);
 
 }

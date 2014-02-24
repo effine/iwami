@@ -154,6 +154,35 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		else
 			return null;
 	}
+
+	@Override
+	public boolean getCellphoneStatus(long cellPhone) {
+		String sql = "select * from " + SqlConstants.TABLE_USERINFO + " where cell_phone = ?";
+		int line = getJdbcTemplate().queryForInt(sql,new Object[]{cellPhone});
+		if(line > 0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public User getUserByCellphone(long cellPhone) {
+		String sql = "select * from " + SqlConstants.TABLE_USERINFO + " where cell_phone = ?";
+		List<User> list = getJdbcTemplate().query(sql, new Object[]{cellPhone},new RowMapper<User>(){
+			@Override
+			public User mapRow(ResultSet rs, int index) throws SQLException {
+				User user = new User();
+				user.setUserid(rs.getLong("userid"));
+				user.setName(rs.getString("name"));
+				return user;
+			}
+		});
+		
+		if(list != null && list.size() > 0)
+			return list.get(0);
+		else
+			return null;
+	}
 }
 
 class UserRowMapper implements RowMapper<User>{

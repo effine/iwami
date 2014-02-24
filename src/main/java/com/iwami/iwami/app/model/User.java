@@ -9,48 +9,50 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 public class User {
 
 	private long id;
-	
+
 	private int currentPrize;
-	
+
 	private int exchangePrize;
-	
+
 	private int newPrize;
-	
+
 	private int contPrize;
-	
+
 	private int commentPrize;
-	
+
 	private long lastCellPhone1;
-	
+
 	private String lastAlipayAccount;
-	
+
 	private long lastBankAccount;
-	
+
 	private String lastBankName;
-	
+
 	private String lastAddres;
-	
+
 	private long lastCellPhone2;
-	
+
 	private String lastName;
-	
+
 	private Date lastmodTime;
-	
+
 	private long lastmodUserid;
-	
+
 	// userinfo table
+	private long userid;
+
 	private String name;
-	
+
 	private String uuid;
-	
+
 	private long cellPhone;
-	
+
 	private int age;
-	
+
 	private int gender;
-	
+
 	private String job;
-	
+
 	private String address;
 
 	public long getId() {
@@ -123,6 +125,14 @@ public class User {
 
 	public void setLastBankAccount(long lastBankAccount) {
 		this.lastBankAccount = lastBankAccount;
+	}
+
+	public long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(long userid) {
+		this.userid = userid;
 	}
 
 	public String getLastBankName() {

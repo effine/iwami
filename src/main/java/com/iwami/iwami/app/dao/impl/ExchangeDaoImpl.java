@@ -32,4 +32,34 @@ public class ExchangeDaoImpl extends JdbcDaoSupport implements ExchangeDao{
 		});
 		return list;
 	}
+
+	@Override
+	public boolean addExchange(Exchange ex) {
+		String sql = "insert into " + SqlConstants.TABLE_EXCHANGE +" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int line = getJdbcTemplate().update(sql,new Object[]{
+				ex.getUserid(),
+				ex.getPresentid(),
+				ex.getPresentName(),
+				ex.getPresentPrize(),
+				ex.getPresentType(),
+				ex.getCount(),
+				ex.getPrize(),
+				ex.getStatus(),
+				ex.getCellPhone(),
+				ex.getAlipayAcount(),
+				ex.getBankAcount(),
+				ex.getBankName(),
+				ex.getAddress(),
+				ex.getName(),
+				ex.getExpress(),
+				ex.getLastmodTime(),
+				ex.getLastmodUserid(),
+				ex.getIsdel()
+		});
+		
+		if(line > 0)
+			return true;
+		else
+			return false;
+	}
 }

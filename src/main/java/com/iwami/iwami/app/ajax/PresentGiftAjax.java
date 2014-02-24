@@ -21,20 +21,31 @@ public class PresentGiftAjax {
 	public Map<Object, Object> statusUpload(Map<String,String> params) {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		try {
-			boolean isExist = params.containsKey("userid") && params.containsKey("taskid") && params.containsKey("type") && params.containsKey("time") && params.containsKey("channel");
+			boolean isExist = params.containsKey("userid") && params.containsKey("cellPhone") && params.containsKey("prize");
 			if(isExist){
+				long userid = Long.parseLong(params.get("userid"));
+				long cellPhone = Long.parseLong(params.get("cellPhone"));
+				int prize = Integer.parseInt(params.get("prize"));
 				
-				
-				
-				
-				
-				
-				
+				if(presentGiftBiz.getUseridStatus(userid)){
+					if(presentGiftBiz.getCellphoneStatus(cellPhone)){
+						if(presentGiftBiz.getPrizeStatus(prize,userid)){
+							result.putAll(presentGiftBiz.getData(userid,cellPhone,prize));
+							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);
+						}else
+							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_PRESENT_GIFT_PRIZE);
+							result.put(ErrorCodeConstants.MSG_KEY,ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_ERROR_PRESENT_GIFT_PRIZE));
+					}else
+						result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_PRESENT_GIFT_CELLPHONE);
+						result.put(ErrorCodeConstants.MSG_KEY,ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_ERROR_PRESENT_GIFT_CELLPHONE));
+				}else
+					result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR_PRESENT_GIFT_USERID);
+					result.put(ErrorCodeConstants.MSG_KEY,ErrorCodeConstants.ERROR_MSG_MAP.get(ErrorCodeConstants.STATUS_ERROR_PRESENT_GIFT_USERID));
 			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		} catch (Throwable t) {
 			if (logger.isErrorEnabled()) {
-				logger.error("Exception in wami", t);
+				logger.error("Exception in present/gift ", t);
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}
@@ -48,7 +59,4 @@ public class PresentGiftAjax {
 	public void setPresentGiftBiz(PresentGiftBiz presentGiftBiz) {
 		this.presentGiftBiz = presentGiftBiz;
 	}
-	
-	
-	
 }
