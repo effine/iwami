@@ -30,7 +30,7 @@ public class WamiTasksAjax {
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		} catch (Throwable t) {
 			if (logger.isErrorEnabled()) {
-				logger.error("Exception in WamiTasks ", t);
+				logger.error("Exception in wami/tasks ", t);
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}

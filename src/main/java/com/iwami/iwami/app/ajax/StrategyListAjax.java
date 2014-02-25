@@ -64,7 +64,7 @@ public class StrategyListAjax {
 			}
 		}catch(Throwable t){
 			if(logger.isErrorEnabled()){
-				logger.error("Exception in strategy_list ",t);
+				logger.error("Exception in strategy/list ",t);
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}

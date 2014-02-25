@@ -44,7 +44,7 @@ public class StrategyRateAjax {
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
 		}catch(Throwable t){
 			if(logger.isErrorEnabled()){
-				logger.error("Exception in strategyRate ",t);
+				logger.error("Exception in strategy/rate ",t);
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_ERROR);
 			}
 		}

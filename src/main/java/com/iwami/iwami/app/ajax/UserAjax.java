@@ -62,7 +62,7 @@ public class UserAjax {
 			}
 		} catch(Throwable t){
 			if(logger.isErrorEnabled())
-				logger.error("Exception in Userinfo", t);
+				logger.error("Exception in userinfo", t);
 			result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR);
 		}
 		

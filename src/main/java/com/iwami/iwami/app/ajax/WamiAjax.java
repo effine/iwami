@@ -22,8 +22,8 @@ public class WamiAjax {
 	public Map<Object, Object> wami(Map<String,String> params) {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		try {
-			boolean isContain = params.containsKey("userid") && params.containsKey("taskid") && params.containsKey("type") && params.containsKey("time") && params.containsKey("channel");
-			if(isContain){
+			boolean isContains = params.containsKey("userid") && params.containsKey("taskid") && params.containsKey("type") && params.containsKey("time") && params.containsKey("channel");
+			if(isContains){
 				int userid = Integer.parseInt(params.get("userid"));
 				long taskid = Long.parseLong(params.get("taskid"));
 				int type = Integer.parseInt(params.get("type"));

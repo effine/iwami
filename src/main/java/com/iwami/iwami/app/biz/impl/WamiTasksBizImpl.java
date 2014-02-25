@@ -22,6 +22,9 @@ public class WamiTasksBizImpl implements WamiTasksBiz {
 
 	@Override
 	public Map<String, Object> getData() {
+		Map<Object,Object> tmap = new HashMap<Object,Object>();
+		tmap.put(1, 1);
+		
 		Map<String,Object> map = new HashMap<String,Object>();
 		long currTime = System.currentTimeMillis();
 		int available = 0;

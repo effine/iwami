@@ -21,8 +21,8 @@ public class GiftHistoryAjax {
 	public Map<Object, Object> statusUpload(Map<String,String> params) {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		try {
-			boolean isExist = params.containsKey("userid");
-			if(isExist){
+			boolean isContains = params.containsKey("userid");
+			if(isContains){
 				long userid = Long.parseLong(params.get("userid"));
 				if(giftHistoryBiz.getUseridStatus(userid)){
 					result.putAll(giftHistoryBiz.getData(userid));

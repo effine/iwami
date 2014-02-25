@@ -39,7 +39,7 @@ public class TipsAjax {
 			}
 		} catch (Throwable t) {
 			if (logger.isErrorEnabled())
-				logger.error("Exception in tips", t);
+				logger.error("Exception in tips ", t);
 			result.put(ErrorCodeConstants.STATUS_KEY,
 					ErrorCodeConstants.STATUS_ERROR);
 		}

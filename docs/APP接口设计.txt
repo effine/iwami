@@ -479,7 +479,7 @@
 
 16、礼品兑换接口
  	接口名字：gift/exchange.ajax
-	输入参数：userid: int 用户id
+	输入参数：userid: long 用户id
 			  ids: int[] 礼物id列表
 			  count: int[] 礼物数量必须和ids对应
 			  cellPhone: long 兑换电话卡的手机号(当礼物有手机充值和快递时，必须有值）
