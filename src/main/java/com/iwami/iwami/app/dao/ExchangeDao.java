@@ -9,5 +9,9 @@ public interface ExchangeDao {
 	List<Exchange> getExchangeList(long userid,int type);
 	
 	boolean addExchange(Exchange ex);
+	
+	boolean addExchangeList(List<Exchange> list);
+	
+	boolean addPrize(long userid,int prize);
 
 }

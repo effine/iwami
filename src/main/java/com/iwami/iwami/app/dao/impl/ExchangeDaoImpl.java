@@ -56,8 +56,51 @@ public class ExchangeDaoImpl extends JdbcDaoSupport implements ExchangeDao{
 				ex.getLastmodUserid(),
 				ex.getIsdel()
 		});
-		
-		if(line > 0)
+		if(line >0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean addExchangeList(List<Exchange> list) {
+		String sql = "insert into " + SqlConstants.TABLE_EXCHANGE +" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count = 0;
+		for(Exchange ex: list){
+			int line = getJdbcTemplate().update(sql,new Object[]{
+					ex.getUserid(),
+					ex.getPresentid(),
+					ex.getPresentName(),
+					ex.getPresentPrize(),
+					ex.getPresentType(),
+					ex.getCount(),
+					ex.getPrize(),
+					ex.getStatus(),
+					ex.getCellPhone(),
+					ex.getAlipayAcount(),
+					ex.getBankAcount(),
+					ex.getBankName(),
+					ex.getAddress(),
+					ex.getName(),
+					ex.getExpress(),
+					ex.getLastmodTime(),
+					ex.getLastmodUserid(),
+					ex.getIsdel()
+			});
+			if(line > 0)
+				count ++;
+		}
+		if(count >0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean addPrize(long userid, int prize) {
+		String sql = "update " + SqlConstants.TABLE_EXCHANGE + " set prize = prize + ? where userid = ? ";
+		int line = getJdbcTemplate().queryForInt(sql,new Object[]{prize,userid});
+		if(line >0)
 			return true;
 		else
 			return false;

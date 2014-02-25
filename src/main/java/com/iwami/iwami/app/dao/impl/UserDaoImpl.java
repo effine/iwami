@@ -183,6 +183,16 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		else
 			return null;
 	}
+
+	@Override
+	public boolean subCurrPrize(long userid, int prize) {
+		String sql = "update " + SqlConstants.TABLE_USER + " set current_prize = current_prize - ? where id = ? and current_prize >= ? and isdel = 0";
+		int line = getJdbcTemplate().queryForInt(sql,new Object[]{userid,prize});
+		if(line >0)
+			return true;
+		else
+			return false;
+	}
 }
 
 class UserRowMapper implements RowMapper<User>{

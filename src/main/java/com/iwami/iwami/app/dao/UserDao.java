@@ -32,5 +32,7 @@ public interface UserDao {
 	boolean getCellphoneStatus(long cellPhone);
 
 	User getUserByCellphone(long cellPhone);
+	
+	boolean subCurrPrize(long userid,int prize);
 
 }
