@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface WamiTasksBiz {
 
-	Map<String,Object> getData();
+	Map<String,Object> getData(long userid);
 	
 }

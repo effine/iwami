@@ -2,32 +2,38 @@ package com.iwami.iwami.app.biz.impl;
 
 import com.iwami.iwami.app.biz.StrategyRateBiz;
 import com.iwami.iwami.app.model.RateInfo;
-import com.iwami.iwami.app.service.RateInfoService;
+import com.iwami.iwami.app.service.StrategyRateService;
 
 public class StrategyRateBizImpl implements StrategyRateBiz {
 
-	private RateInfoService rateInfoService;
+	private StrategyRateService strategyRateService;
 
-	public RateInfoService getRateInfoService() {
-		return rateInfoService;
+	public StrategyRateService getStrategyRateService() {
+		return strategyRateService;
 	}
 
-	public void setRateInfoService(RateInfoService rateInfoService) {
-		this.rateInfoService = rateInfoService;
-	}
-
-	@Override
-	public boolean getIdStatus(long strategyId) {
-		return rateInfoService.getIdStatus(strategyId);
+	public void setStrategyRateService(StrategyRateService strategyRateService) {
+		this.strategyRateService = strategyRateService;
 	}
 
 	@Override
-	public boolean getRepeatStatus(long strategyId,String uuid) {
+	public boolean getStrategyIdStatus(long strategyId) {
+		return strategyRateService.getStrategyIdStatus(strategyId);
+	}
+
+	@Override
+	public boolean getRepeatStatus(long strategyId, String uuid) {
 		RateInfo ri = new RateInfo();
 		ri.setStrategyId(strategyId);
 		ri.setUuid(uuid);
 		ri.setLastmodTime(System.currentTimeMillis());
+		ri.setIsdel(0);
 		
-		return rateInfoService.pointPraise(ri);
+		// TODO 插入rate_info表，如捕获到unique异常返回100073;返回正常则更新strategy_rate表skim+1，需要添加事务
+		String s = strategyRateService.pointPraise(ri);
+		if(s != null && "unique".equalsIgnoreCase(s))
+			return strategyRateService.addSkim(strategyId);
+		else
+			return false;
 	}
 }

@@ -42,7 +42,8 @@ public class TaskDaoImpl extends JdbcDaoSupport implements TaskDao{
 
 	@Override
 	public List<Task> getOrdinaryTask() {
-		String sql = "select * from " + SqlConstants.TABLE_TASK + " where type & 1 = 1";
+		String sql = "select * from " + SqlConstants.TABLE_TASK 
+				+ " where type & 1 = 1" + " and now() >= start_time and now() <= end_time order by start_time desc";
 		
 		List<Task> list = getJdbcTemplate().query(sql,new RowMapper<Task>(){
 			@Override

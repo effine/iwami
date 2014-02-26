@@ -6,6 +6,6 @@ public interface RateInfoDao {
 
 	boolean getIdStatus(long strategyId);
 	
-	boolean pointPraise(RateInfo ri);
+	String pointPraise(RateInfo ri);
 	
 }

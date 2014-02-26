@@ -19,7 +19,9 @@ public class RateInfoDaoImpl extends JdbcDaoSupport implements RateInfoDao{
 	}
 
 	@Override
-	public boolean pointPraise(RateInfo ri) {
+	public String pointPraise(RateInfo ri) {
+		
+		//TODO try catch 捕获unique异常
 		String sql = "insert into " + SqlConstants.TABLE_RATE_INFO + " values(?,?,?,?)";
 		int line = getJdbcTemplate().queryForInt(sql,new Object[]{
 				ri.getStrategyId(),
@@ -29,8 +31,8 @@ public class RateInfoDaoImpl extends JdbcDaoSupport implements RateInfoDao{
 		});
 		
 		if(line > 0)
-			return true;
+			return null;
 		else
-			return false;
+			return "unique";
 	}
 }

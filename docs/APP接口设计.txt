@@ -241,7 +241,7 @@
 			   	 		appintr: String  app简介
 				   	 	prize: int  米粒数
 				   	 	type: int 任务类型: 0普通任务，1宝箱任务
-				   	 	available: int  是否抢光: 0未抢光，1抢光		//TODO  task表不存在该字段
+				   	 	available: int  是否抢光: 0未抢光，1抢光
 				   	 	background: int 是否后台运行: 0不需要,1需要
 				   	 	register: int 是否需要注册: 0不需要,
 				   	 	time: int 运行时间（单位：秒）
@@ -255,7 +255,7 @@
 			   		{}
 
 			   ]
-			   ongoing: [ 进行中的任务，按照“已经正在下载中--下载完等待执行--执行中”三个分类进行排序，
+			   ongoing: [ 进行中的任务，按照“正在下载中--已经下载完等待执行--执行中”三个分类进行排序，
 			   每一分类下按照用户开始执行任务的时间进行倒序排序
 			   		{
 			   			id: int 任务id

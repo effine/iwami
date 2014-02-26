@@ -34,5 +34,6 @@ public interface UserDao {
 	User getUserByCellphone(long cellPhone);
 	
 	boolean subCurrPrize(long userid,int prize);
+	
 
 }

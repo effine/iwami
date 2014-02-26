@@ -27,7 +27,7 @@ public class StrategyRateAjax {
 				long strategyId = Long.parseLong(params.get("id"));
 				String uuid = params.get("uuid");
 				
-				if(strategyRateBiz.getIdStatus(strategyId)){
+				if(strategyRateBiz.getStrategyIdStatus(strategyId)){
 					if(uuid != null && "".equals(uuid.trim())){
 						if(strategyRateBiz.getRepeatStatus(strategyId, uuid)){
 							result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_OK);

@@ -23,8 +23,7 @@ public class WamiTasksAjax {
 		try {
 			if(params.containsKey("userid")){
 				int userid = Integer.parseInt(params.get("userid"));
-				
-				result.putAll(wamiTasksBiz.getData());
+				result.putAll(wamiTasksBiz.getData(userid));
 				result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_OK);
 			}else
 				result.put(ErrorCodeConstants.STATUS_KEY,ErrorCodeConstants.STATUS_PARAM_ERROR);
