@@ -137,7 +137,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	}
 
 	@Override
-	public User getPrize(long userid) {
+	public User getUser(long userid) {
 		String sql = "select * from " + SqlConstants.TABLE_USER + " where id = ?";
 		List<User> list =  getJdbcTemplate().query(sql,new Object[]{userid},new RowMapper<User>(){
 			@Override
@@ -185,9 +185,15 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	}
 
 	@Override
-	public boolean subCurrPrize(long userid, int prize) {
+	public int subCurrPrize(long userid, int prize) {
 		String sql = "update " + SqlConstants.TABLE_USER + " set current_prize = current_prize - ? where id = ? and current_prize >= ? and isdel = 0";
-		int line = getJdbcTemplate().queryForInt(sql,new Object[]{userid,prize});
+		return getJdbcTemplate().queryForInt(sql,new Object[]{prize,userid,prize});
+	}
+
+	@Override
+	public boolean addCurrPrize(long userid, int prize) {
+		String sql = "update " + SqlConstants.TABLE_USER + " set current_prize = current_prize + ? where id = ?";
+		int line = getJdbcTemplate().queryForInt(sql,new Object[]{prize,userid});
 		if(line >0)
 			return true;
 		else

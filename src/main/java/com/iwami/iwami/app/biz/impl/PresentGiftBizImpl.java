@@ -45,7 +45,6 @@ public class PresentGiftBizImpl implements PresentGiftBiz{
 		tempMap.put("prize", presentGiftService.getCurrPrize(userid));
 		map.put("data", tempMap);
 		
-		//TODO 需要添加事务
 		
 		Exchange ex = new Exchange();
 		ex.setUserid(userid);
@@ -66,10 +65,29 @@ public class PresentGiftBizImpl implements PresentGiftBiz{
 		ex.setLastmodTime(System.currentTimeMillis());
 		ex.setLastmodUserid((int)userid);
 		ex.setIsdel(0);
+		
+		//TODO 需要对下面代码添加事务
+		
 		presentGiftService.addExchange(ex);
+		int line = presentGiftService.subPrize(userid,prize);
+		if(line == 0){
+			ex.setStatus(1);
+		}
 		
+		boolean b = presentGiftService.addPrize(presentGiftService.getUser(cellPhone).getUserid(), prize);
+		if(b)
+			ex.setStatus(3);
 		
+		//TODO 未完成后端逻辑
+		/*
+		 * （2）exchange加上米粒数
+		 * （6）给被赠送方发送推送,必须在事务完成才可以进行
+		 * 		1> 推送方案待定！！！！！！！！
+		 * 		2> 推送话术待定!!!!!!!!!!!!！！
+		 * 
+		 * */
 		
+		//TODO 需要对以上代码添加事务
 		return map;
 	}
 }

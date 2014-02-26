@@ -27,13 +27,15 @@ public interface UserDao {
 	
 	boolean getUseridStatus(long userid);
 	
-	User getPrize(long userid);
+	User getUser(long userid);
 	
 	boolean getCellphoneStatus(long cellPhone);
 
 	User getUserByCellphone(long cellPhone);
 	
-	boolean subCurrPrize(long userid,int prize);
+	int subCurrPrize(long userid,int prize);
+	
+	boolean addCurrPrize(long userid,int prize);
 	
 
 }

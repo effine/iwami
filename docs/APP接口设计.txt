@@ -255,7 +255,7 @@
 			   		{}
 
 			   ]
-			   ongoing: [ 进行中的任务，按照“正在下载中--已经下载完等待执行--执行中”三个分类进行排序，
+			   ongoing: [ 进行中的任务，按照“已经下载完等待执行--正在下载中--执行中”三个分类进行排序，
 			   每一分类下按照用户开始执行任务的时间进行倒序排序
 			   		{
 			   			id: int 任务id
@@ -412,10 +412,10 @@
 				 4> present_type=5
 				 5> prize为赠送的米粒数
 				 6> status值为0
-			   (2)从赠送方的user表current_prize减去米粒数，exchange加上米粒数	//TODO 上面已完成
+			   (2)从赠送方的user表current_prize减去米粒数，exchange加上米粒数
 			     1> update语句的时候必须加where条件: 当前用户的current_prize大于等于减去的米粒数
 			     2> 如update返回影响行数为0，则更新第一条status值为1，返回100143错误，并回滚事务
-			   (3)从被赠送放得user表current_prize加上米粒数
+			   (3)从被赠送方的user表current_prize加上米粒数
 			  （4）将第一点的status值修改为3（兑换成功）
 			  （5）1\2\3\4点必须在同一个事务里
 			  （6）给被赠送方发送推送,必须在事务完成才可以进行

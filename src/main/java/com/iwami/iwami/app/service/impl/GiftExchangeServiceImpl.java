@@ -45,7 +45,7 @@ public class GiftExchangeServiceImpl implements GiftExchangeService {
 	}
 
 	@Override
-	public boolean subCurrPrize(long userid, int prize) {
+	public int subCurrPrize(long userid, int prize) {
 		return userDao.subCurrPrize(userid, prize);
 	}
 
@@ -66,6 +66,6 @@ public class GiftExchangeServiceImpl implements GiftExchangeService {
 
 	@Override
 	public int getCurrPrize(long userid) {
-		return userDao.getPrize(userid).getCurrentPrize();
+		return userDao.getUser(userid).getCurrentPrize();
 	}
 }

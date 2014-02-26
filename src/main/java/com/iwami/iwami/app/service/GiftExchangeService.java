@@ -9,7 +9,7 @@ public interface GiftExchangeService {
 	
 	boolean addExchangeList(List<Exchange> list);
 	
-	boolean subCurrPrize(long userid,int prize);
+	int subCurrPrize(long userid,int prize);
 	
 	boolean addPrize(long userid,int prize);
 	

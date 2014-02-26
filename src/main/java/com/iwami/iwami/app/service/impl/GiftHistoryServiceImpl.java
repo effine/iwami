@@ -31,7 +31,7 @@ public class GiftHistoryServiceImpl implements GiftHistoryService {
 
 	@Override
 	public User getExchangePrize(long userid) {
-		return userDao.getPrize(userid);
+		return userDao.getUser(userid);
 	}
 
 	@Override

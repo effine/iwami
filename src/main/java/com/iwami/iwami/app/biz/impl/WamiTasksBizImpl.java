@@ -27,7 +27,6 @@ public class WamiTasksBizImpl implements WamiTasksBiz {
 		tmap.put(1, 1);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
-		long currTime = System.currentTimeMillis();
 		int available = 0;
 		List<Map<String,Object>> beanList = new ArrayList<Map<String,Object>>();
 		List<Map<String,Object>> orderList = new ArrayList<Map<String,Object>>();
@@ -79,9 +78,16 @@ public class WamiTasksBizImpl implements WamiTasksBiz {
 			}
 		}
 		beanList.addAll(orderList);
+		map.put("new", beanList);
+		
+		
+		//TODO 不知道怎么取得下列值
+		map.put("ongoing", null);
+		map.put("done", null);
+		
 		map.put("days", null);
 		map.put("count", null);
-		map.put("new", beanList);
+		
 		return map;
 	}
 }

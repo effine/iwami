@@ -14,5 +14,9 @@ public interface PresentGiftService {
 	User getUser(long cellPhone);
 	
 	boolean addExchange(Exchange ex);
+	
+	int subPrize(long userid,int prize);
+	
+	boolean addPrize(long userid,int prize);
 
 }
