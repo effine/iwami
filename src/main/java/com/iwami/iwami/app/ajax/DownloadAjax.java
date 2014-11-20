@@ -23,7 +23,7 @@ public class DownloadAjax {
 	public Map<Object, Object> download(Map<String, String> params) {
 		Map<Object, Object> result = new HashMap<Object, Object>();
 		
-		try{
+		try{ 
 			String url = apkBiz.getApkURL();
 			if(StringUtils.isNotBlank(url)){
 				result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_OK);
