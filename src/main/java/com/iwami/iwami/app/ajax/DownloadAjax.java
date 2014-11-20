@@ -37,8 +37,6 @@ public class DownloadAjax {
 				logger.error("Exception in download", t);
 			result.put(ErrorCodeConstants.STATUS_KEY, ErrorCodeConstants.STATUS_ERROR);
 		}
-		
-		
 		return result;
 	}
 
@@ -49,5 +47,4 @@ public class DownloadAjax {
 	public void setApkBiz(ApkBiz apkBiz) {
 		this.apkBiz = apkBiz;
 	}
-
 }

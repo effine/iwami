@@ -23,12 +23,11 @@ public class DispatchServlet extends HttpServlet {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
-
 		Map<String, String> params = new HashMap<String, String>();
 		
+		/* 获取并封装参数/值  */
 		Enumeration<String> eu = req.getParameterNames();
 		while(eu.hasMoreElements()){
 			String key = eu.nextElement();
@@ -53,9 +52,7 @@ public class DispatchServlet extends HttpServlet {
 		}
 	}
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
 		doPost(req, resp);
 	}
-
 }

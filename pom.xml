@@ -61,6 +61,8 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+		
+		<!-- Json -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -117,6 +119,8 @@
 			<artifactId>spring-test</artifactId>
 			<version>3.0.5.RELEASE</version>
 		</dependency>
+		
+		<!-- Java开源缓存框架 -->
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
@@ -132,6 +136,8 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.1</version>
 		</dependency>
+		
+		<!-- 生成/解析二维码 -->
 		<dependency>
 			<groupId>com.google.zxing</groupId>
 			<artifactId>javase</artifactId>
