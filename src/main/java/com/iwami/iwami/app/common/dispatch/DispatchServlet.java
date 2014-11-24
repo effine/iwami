@@ -40,6 +40,7 @@ public class DispatchServlet extends HttpServlet {
 
 		logger.info("ajax-dispather" + " : " +  "Receving request path: " + path + ", param: " + params);
 
+		/* 往服务器端写数据  */
 		Writer writer = new OutputStreamWriter(resp.getOutputStream(), "utf-8");
 
 		try {

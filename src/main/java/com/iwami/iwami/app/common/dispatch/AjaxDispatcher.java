@@ -13,7 +13,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-@SuppressWarnings("unchecked")
 public class AjaxDispatcher implements ApplicationContextAware {
 
     private static Logger logger = Logger.getLogger(AjaxDispatcher.class);
@@ -24,9 +23,11 @@ public class AjaxDispatcher implements ApplicationContextAware {
     private static Map<String, Method> ajaxName2Method = new ConcurrentHashMap<String, Method>();
     private static Map<String, Object> ajaxName2Bean = new ConcurrentHashMap<String, Object>();
 
-    public static String dispatch(Map<String, Object> req) throws Exception {
+    public static String dispatch(Map<String, Object> map) throws Exception {
+    	
+    	/* 使用jackson来操作json  */
         ObjectMapper mapper = new ObjectMapper();
-        String path = (String)req.get(KEY_PATH);
+        String path = String.valueOf(map.get(KEY_PATH));
         Object ins = ajaxName2Bean.get(path);
         Method m = ajaxName2Method.get(path);
         if (m == null) {
@@ -36,9 +37,9 @@ public class AjaxDispatcher implements ApplicationContextAware {
         Object[] paramValues = new Object[1];
 
         try {
-            paramValues[0] = req.get(KEY_PARAM);
+            paramValues[0] = map.get(KEY_PARAM);
         } catch (Exception e) {
-            logger.error("Can not deserialize json param " + req.get(KEY_PARAM) + " to class " + paramClasses[0], e);
+            logger.error("Can not deserialize json param " + map.get(KEY_PARAM) + " to class " + paramClasses[0], e);
             throw e;
         }
 
@@ -53,7 +54,7 @@ public class AjaxDispatcher implements ApplicationContextAware {
 
     }
 
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void registerAjaxClass(Class beanClass, Object bean) {
         String prefix = ((AjaxClass) beanClass.getAnnotation(AjaxClass.class)).prefix();
         if (prefix == null) {
@@ -88,5 +89,4 @@ public class AjaxDispatcher implements ApplicationContextAware {
     public static Map<String, Method> getDispatchMap() {
         return Collections.unmodifiableMap(ajaxName2Method);
     }
-
 }
