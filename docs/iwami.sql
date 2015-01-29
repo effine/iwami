@@ -187,9 +187,9 @@ create table user (
 	id bigint(20) not null auto_increment comment "自增id",
 	current_prize int(10) not null comment "用户拥有米粒数目",
 	exchange_prize int(10) not null comment "用户已经兑换米粒数目",
-	--new_prize int(10) not null comment "用户新装米粒数目",
-	--cont_prize int(10) not null comment "用户激活米粒数目",
-	--comment_prize int(10) not null comment "用户评价米粒数目",
+	-- new_prize int(10) not null comment "用户新装米粒数目",
+	-- cont_prize int(10) not null comment "用户激活米粒数目",
+	-- comment_prize int(10) not null comment "用户评价米粒数目",
 	last_cell_phone_1  bigint(20)  comment "上次充值手机号",
 	last_alipay_account varchar(255) comment "上次支付宝账号",
 	last_bank_account  bigint(20) comment "上次银行账号",
@@ -308,18 +308,20 @@ create table share (
 	userid int(10) not null comment "用户id",
 	type tinyint(3) not null comment "0：实物兑换/1：银行卡提现/2：支付宝提现/3：手机充值/4：抽奖/5：低调炫耀",
 	target tinyint(3) not null comment "0：微信好友/1：微信朋友圈/2：新浪微博",
-	msg varchar(255) not null comment "分享内容"
+	msg varchar(255) not null comment "分享内容",
 	lastmod_time datetime not null comment "上次修改时间",
-	index lhid (userid),
+	-- index lhid (userid),
 	primary key(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 宝箱出现配置表
-create table share (
-	days tinyint(3) not null comment "N天",
-	count tinyint(3) not null comment "连续M次",
-	lastmod_time datetime not null comment "上次修改时间",
-	primary key(id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*
+	create table share (
+		days tinyint(3) not null comment "N天",
+		count tinyint(3) not null comment "连续M次",
+		lastmod_time datetime not null comment "上次修改时间",
+		primary key(id)
+	)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+*/
 
 -- 为了执行完成全部sql语句

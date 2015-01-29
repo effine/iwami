@@ -92,6 +92,7 @@ public class SMSUtils {
 		long start = System.currentTimeMillis();
 		DefaultHttpClient client = wrapClient(new DefaultHttpClient());
 		client.addRequestInterceptor(new HttpRequestInterceptor() {
+			@SuppressWarnings("restriction")
 			@Override
 			public void process(HttpRequest request, HttpContext context)
 					throws HttpException, IOException {
@@ -195,6 +196,7 @@ public class SMSUtils {
 		return result;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static DefaultHttpClient wrapClient(HttpClient base) 
 	{
 	    try {
