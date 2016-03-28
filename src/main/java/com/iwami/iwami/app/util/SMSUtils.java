@@ -54,7 +54,7 @@ public class SMSUtils {
 
 	private static String luosimaoUrl = "https://sms-api.luosimao.com/v1/send.json";
 
-	// sms bao
+	// 发送短信sms
 	public static boolean sendSMSBao(String data, String phone) {
 		if (!isSend)
 			return true;
@@ -82,7 +82,6 @@ public class SMSUtils {
 		}
 		return result;
 	}
-	// end of sms bao
 
 	// luosimao
 	public static boolean sendLuosiMao(String data, String phone) {
