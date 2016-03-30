@@ -41,6 +41,7 @@ import org.apache.http.protocol.HttpContext;
 
 import sun.misc.BASE64Encoder;
 
+@SuppressWarnings("restriction")
 public class SMSUtils {
 
 	private static boolean isSend = false;
@@ -91,7 +92,6 @@ public class SMSUtils {
 		long start = System.currentTimeMillis();
 		DefaultHttpClient client = wrapClient(new DefaultHttpClient());
 		client.addRequestInterceptor(new HttpRequestInterceptor() {
-			@SuppressWarnings("restriction")
 			@Override
 			public void process(HttpRequest request, HttpContext context)
 					throws HttpException, IOException {
