@@ -16,8 +16,8 @@ import com.iwami.iwami.app.model.Contact;
 public class ContactAjax {
 	
 	private Log logger = LogFactory.getLog(getClass());
-	
 	private ContactBiz contactBiz;
+	
 
 	@AjaxMethod(path = "contact.ajax")
 	public Map<Object, Object> download(Map<String, String> params) {
