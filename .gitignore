@@ -1,13 +1,14 @@
+.settings/
+bin/
+target/
+src/main/webapp/WEB-INF/classes/
+build/
+.gradle/
+gradle/
+
+.classpath
+.project
 *.class
-jdbc-mysql.properties
-# ----- Package Files -----------#
 *.jar
 *.war
 *.ear
-/target
-
-# --------- Eclipse Files -------- #
-*.classpath
-*.project
-/.settings
-
