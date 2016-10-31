@@ -1,2 +1,2 @@
 
-	iwami
+	iwami-android
