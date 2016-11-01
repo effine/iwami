@@ -129,7 +129,7 @@
 		<property name="strategyDetailService" ref="strategyDetailService" />
 	</bean>
 	<bean name="strategyRateBiz" class="com.iwami.iwami.app.biz.impl.StrategyRateBizImpl">
-		<property name="rateInfoService" ref="rateInfoService" />
+		<property name="strategyRateService" ref="strategyRateService" />
 	</bean>
 	<bean name="presentListBiz" class="com.iwami.iwami.app.biz.impl.PresentListBizImpl">
 		<property name="presentListService" ref="presentListService" />
@@ -142,6 +142,9 @@
 	
 	
 	<!-- service -->
+	<bean name="strategyRateService" class="com.iwami.iwami.app.service.impl.StrategyRateServiceImpl">
+		<property name="strategyRateDao" ref="strategyRateDao" />
+	</bean>
 	<bean name="onstartService" class="com.iwami.iwami.app.service.impl.OnstartServiceImpl">
 		<property name="onstartDao" ref="onstartDao" />
 	</bean>
@@ -177,9 +180,6 @@
 	</bean>
 	<bean name="strategyDetailService" class="com.iwami.iwami.app.service.impl.StrategyDetailServiceImpl">
 		<property name="strategyDetailDao" ref="strategyDetailDao" />
-	</bean>
-	<bean name="rateInfoService" class="com.iwami.iwami.app.service.impl.RateInfoServiceImpl">
-		<property name="rateInfoDao" ref="rateInfoDao" />
 	</bean>
 	<bean name="presentListService" class="com.iwami.iwami.app.service.impl.PresentListServiceImpl">
 		<property name="userDao" ref="userDao" />
