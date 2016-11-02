@@ -43,6 +43,7 @@ public class AjaxDispatcher implements ApplicationContextAware {
             throw e;
         }
 
+        // TODO 研究invoke()方法
         Object result = m.invoke(ins, paramValues);
         if (result instanceof String) {
             return (String) result;
